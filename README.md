@@ -38,6 +38,7 @@ You will get `init_db.sql` file in current directory. Run this SQL script by:
 NOTE: re-run this SQL file will remove all existing data.
 
 ### Run
+    memcached
 
     $ node --harmony app.js
 

@@ -184,7 +184,10 @@ module.exports = {
             users: users
         };
     },
+    'POST /api/users': function* (){
+        helper.checkPermission(this.request, constants.role.EDITOR);
 
+    },
     'POST /api/authenticate': function* () {
         /**
          * Authenticate user by email and password, for local user only.
