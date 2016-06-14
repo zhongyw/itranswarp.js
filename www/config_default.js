@@ -28,9 +28,9 @@ module.exports = {
         // port of mysql, default to 3306:
         port: 3306,
         // user to login to mysql, change to your mysql user:
-        user: 'www',
+        user: 'subox',
         // password to login to mysql, change to your mysql password:
-        password: 'www',
+        password: 'subox@2016',
         // database used in mysql, default to 'itranswarp':
         database: 'itranswarp',
         // timeout before initial a connection to mysql, default to 3 seconds:
