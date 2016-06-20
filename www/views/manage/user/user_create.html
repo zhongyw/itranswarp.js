@@ -10,7 +10,7 @@
             if (err) {
                 return fatal(err);
             }
-            var categories = data.roles;
+            var roles = data.roles;
             var id = '{{ id }}';
             if (id) {
                 getJSON('/api/users/' + id, function (err, article) {
@@ -47,9 +47,7 @@
     }
 
     function initVM(user, roles) {
-        if (article.cover_id) {
-            $('#image-preview').css('background-image', 'url(/files/attachments/' + article.cover_id + '/l)');
-        }
+
         var vm = new Vue({
             el: '#vm',
             data: {
@@ -112,14 +110,6 @@
             }
         };
 
-        // fix vue select init:
-        $('select[name=category_id]').val(article.category_id || '');
-
-        $('#content-editor').val(article.content || '');
-        var htmleditor = UIkit.htmleditor($('#content-editor').get(0), {
-            markdown: true,
-            maxsplitsize: 600
-        });
 
         // watch file change:
         $('#file').change(function (evt) {
@@ -183,7 +173,7 @@
                     <select name="role_id" v-model="role_id" class="uk-width-1-1">
                         <option value="">-- Select a role --</option>
                         {% raw %}
-                        <option v-repeat="role: roles" value="{{ role.id }}">{{ role.name }}</option>
+                        <option v-repeat="roles" value="{{ $value }}">{{ $key}}</option>
                         {% endraw %}
                     </select>
                 </div>
