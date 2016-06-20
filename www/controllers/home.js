@@ -358,9 +358,13 @@ module.exports = {
             user = this.request.user;
         console.log('Referer: ' + referer);
         if (user !== null) {
-            
+
         }
         this.render(getView('signin.html'), yield $getModel.apply(this, [{}]));
+    },
+    'GET /tools/bug': function* (id) {
+
+        this.render(getView('tools/bug.html'), yield $getModel.apply(this, [{}]));
     },
 
     'GET /search': function* () {

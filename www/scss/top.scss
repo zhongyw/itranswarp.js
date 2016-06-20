@@ -1,0 +1,583 @@
+@import 'variables';
+/**
+ * Created by zhongyw on 2016/3/13.
+ */
+.viewFramework-topbar {
+  position: fixed;
+  width: 100%;
+  height: 50px;
+  background: $main-color;
+  z-index: 101
+}
+
+.viewFramework-body {
+  position: absolute;
+  width: 100%;
+  top: 70px;
+  bottom: 0px;
+  background-color: #000;
+  z-index: 100
+}
+
+
+.poly-emm-topbar {
+  position: relative;
+  z-index: 100;
+  clear: both;
+  height: 50px;
+  background: $main-color;
+  font-size: 12px;
+  min-width: 990px
+}
+
+.poly-emm-topbar a {
+  text-decoration: none
+}
+
+.poly-emm-topbar .icon-arrow-down {
+  display: inline-block;
+  width: 18px;
+  text-align: center;
+  vertical-align: middle;
+  transition: transform 0.2s, vertical-align 0.2s;
+  -o-transition: transform 0.2s, vertical-align 0.2s;
+  -ms-transition: transform 0.2s, vertical-align 0.2s;
+  -moz-transition: transform 0.2s, vertical-align 0.2s;
+  -webkit-transition: transform 0.2s, vertical-align 0.2s
+}
+
+.poly-emm-topbar .dropdown .dropdown-menu {
+  z-index: 1;
+  font-size: 12px;
+  border-radius: 0;
+  -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  -moz-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1)
+}
+
+.poly-emm-topbar .dropdown .dropdown-menu a {
+  padding: 0
+}
+
+.poly-emm-topbar .dropdown.open .icon-arrow-down {
+  vertical-align: text-top;
+  transform: rotate(180deg);
+  -webkit-transform: rotate(180deg);
+  -moz-transform: rotate(180deg);
+  -ms-transform: rotate(180deg);
+  -o-transform: rotate(180deg)
+}
+
+.poly-emm-topbar .topbar-wrap, .poly-emm-topbar .topbar-logo, .poly-emm-topbar .topbar-home, .poly-emm-topbar .topbar-home-link, .poly-emm-topbar .topbar-nav, .poly-emm-topbar .topbar-info {
+  height: 100%
+}
+
+.poly-emm-topbar .topbar-left {
+  float: left
+}
+
+.poly-emm-topbar .topbar-right {
+  float: right
+}
+
+.poly-emm-topbar .topbar-clearfix:before, .poly-emm-topbar .topbar-clearfix:after {
+  display: table;
+  content: " "
+}
+
+.poly-emm-topbar .topbar-clearfix:after {
+  clear: both
+}
+
+.poly-emm-topbar .topbar-head {
+  background: darken($main-color,5%);
+  height: 50px
+}
+
+.poly-emm-topbar .topbar-logo, .poly-emm-topbar .topbar-home {
+  display: block;
+  width: 50px;
+  background: #0099cc;
+  font-size: 18px;
+  color: #FFF;
+  text-align: center;
+  line-height: 50px
+}
+
+.poly-emm-topbar .topbar-logo span, .poly-emm-topbar .topbar-home span {
+  line-height: 50px
+}
+
+.poly-emm-topbar .topbar-logo {
+  background: darken($main-color, 10%);
+}
+
+.poly-emm-topbar .topbar-home {
+  margin-right: 1px;
+  font-size: 20px
+}
+
+.poly-emm-topbar .topbar-home:hover {
+  background: darken($main-color,10%)
+}
+
+.poly-emm-topbar .topbar-home-link {
+  padding: 0 20px;
+  margin-right: 1px;
+  background: $main-color
+}
+
+.poly-emm-topbar .topbar-home {
+  -o-transition: all 0.15s, 0.15s;
+  -ms-transition: all 0.15s, 0.15s;
+  -moz-transition: all 0.15s, 0.15s;
+  -webkit-transition: all 0.15s, 0.15s
+}
+
+.poly-emm-topbar .topbar-btn {
+  color: #fff;
+  font-size: 14px;
+  line-height: 50px
+}
+
+.poly-emm-topbar .topbar-btn:hover {
+  background: darken($main-color,10%)
+}
+
+.poly-emm-topbar .topbar-nav.open .topbar-nav-btn {
+  background: #fff;
+  color: #333
+}
+
+.poly-emm-topbar .topbar-nav-btn {
+  padding: 0 20px;
+  display: inline-block;
+  height: 50px
+}
+
+.poly-emm-topbar .topbar-nav-list {
+  border: none;
+  padding: 10px;
+  margin-top: 0;
+  white-space: nowrap
+}
+
+.poly-emm-topbar .topbar-nav-list .topbar-nav-col {
+  display: inline-block;
+  vertical-align: top;
+  padding: 0 10px
+}
+
+.poly-emm-topbar .topbar-nav-list .topbar-nav-item .topbar-nav-item-title {
+  margin: 3px 0px;
+  color: #999;
+  font-weight: 600
+}
+
+.poly-emm-topbar .topbar-nav-list .topbar-nav-item .topbar-nav-gap {
+  border-top: 1px solid #f2f2f2;
+  width: 100%;
+  margin: 10px 0
+}
+
+.poly-emm-topbar .topbar-nav-list .topbar-nav-item ul {
+  padding: 0;
+  margin: 10px 0 0 0;
+  list-style: none
+}
+
+.poly-emm-topbar .topbar-nav-list .topbar-nav-item ul li {
+  min-width: 180px;
+  height: 30px;
+  line-height: 30px;
+  margin-bottom: 2px
+}
+
+.poly-emm-topbar .topbar-nav-list .topbar-nav-item ul li a {
+  display: block;
+  height: 100%;
+  padding: 0 10px;
+  text-decoration: none;
+  color: #333
+}
+
+.poly-emm-topbar .topbar-nav-list .topbar-nav-item ul li a:hover {
+  background-color: darken($main-bg-color, 5%);
+}
+
+.poly-emm-topbar .topbar-nav-list .topbar-nav-item ul li a .topbar-nav-item-icon {
+  padding-right: 2px;
+  font-size: 16px;
+  vertical-align: text-bottom
+}
+
+.poly-emm-topbar .topbar-nav-list .topbar-nav-item ul li.topbar-unservice a {
+  color: #999
+}
+
+.poly-emm-topbar .topbar-nav-list .topbar-nav-item ul li.topbar-unservice a .topbar-nav-item-icon {
+  color: #fff
+}
+
+.poly-emm-topbar .topbar-info {
+  background: darken($main-color,10%)
+}
+
+.poly-emm-topbar .topbar-info .topbar-btn {
+  padding: 0 10px;
+  height: 50px;
+  display: block;
+  z-index: 2;
+  background: $main-color
+}
+
+.poly-emm-topbar .topbar-info .topbar-btn:hover {
+  background: darken($main-color, 10%)
+}
+
+.poly-emm-topbar .topbar-info .topbar-btn.open {
+  position: relative
+}
+
+.poly-emm-topbar .topbar-info .topbar-btn-search {
+  padding: 0;
+  margin-left: 1px
+}
+
+.poly-emm-topbar .topbar-info .topbar-info-gap {
+  color: #fff
+}
+
+.poly-emm-topbar .topbar-info .dropdown .dropdown-menu {
+  width: 100%;
+  min-width: 0px;
+  margin-top: -1px;
+  border: none
+}
+
+.poly-emm-topbar .topbar-info .dropdown.open .topbar-btn {
+  color: #333;
+  background: #fff;
+  border-bottom: 1px solid #eaedf1;
+  position: relative
+}
+
+.poly-emm-topbar .topbar-info .topbar-info-btn {
+  height: 40px;
+  border-bottom: 1px solid #eaedf1
+}
+
+.poly-emm-topbar .topbar-info .topbar-info-btn a {
+  line-height: 40px;
+  padding-left: 10px
+}
+
+.poly-emm-topbar .topbar-info-item {
+  display: inline-block;
+  margin-left: 1px
+}
+
+.poly-emm-topbar .topbar-notice {
+  position: relative;
+  font-size: 12px;
+  margin-left: 1px;
+  padding: 0 12px 0 8px !important
+}
+
+.poly-emm-topbar .topbar-notice .topbar-notice-panel {
+  display: none
+}
+
+.poly-emm-topbar .topbar-notice.open .topbar-notice-panel {
+  display: block
+}
+
+.poly-emm-topbar .topbar-notice .topbar-notice-panel {
+  position: absolute;
+  top: 48px;
+  left: -185px;
+  width: 440px;
+  border-radius: 2px;
+  z-index: 15;
+  -webkit-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.175);
+  -moz-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.175);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.175)
+}
+
+.poly-emm-topbar .topbar-notice .topbar-notice-panel .topbar-notice-arrow {
+  background: url(images/notice-arrow.png) 0 0 no-repeat;
+  width: 11px;
+  height: 6px;
+  position: absolute;
+  top: -6px;
+  left: 220px
+}
+
+.poly-emm-topbar .topbar-notice .topbar-notice-panel .topbar-notice-head {
+  height: 50px;
+  background-color: #eaedf1;
+  padding: 0 15px;
+  line-height: 50px;
+  color: #333;
+  font-size: 14px
+}
+
+.poly-emm-topbar .topbar-notice .topbar-notice-panel .topbar-notice-body {
+  height: 300px;
+  overflow-y: auto;
+  background: #fff;
+  font-size: 12px
+}
+
+.poly-emm-topbar .topbar-notice .topbar-notice-panel .topbar-notice-body ul {
+  list-style: none;
+  margin: 0;
+  padding: 0
+}
+
+.poly-emm-topbar .topbar-notice .topbar-notice-panel .topbar-notice-body ul li {
+  height: 60px;
+  line-height: 20px;
+  border-bottom: 1px solid #eaedf1
+}
+
+.poly-emm-topbar .topbar-notice .topbar-notice-panel .topbar-notice-body ul li a {
+  display: block;
+  height: 100%;
+  padding: 10px 10px;
+  background: #fff;
+  color: #333
+}
+
+.poly-emm-topbar .topbar-notice .topbar-notice-panel .topbar-notice-body ul li a .topbar-notice-link {
+  display: block;
+  max-width: 300px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  color: #06c
+}
+
+.poly-emm-topbar .topbar-notice .topbar-notice-panel .topbar-notice-body ul li a:hover {
+  background: #f9f9f9
+}
+
+.poly-emm-topbar .topbar-notice .topbar-notice-panel .topbar-notice-body ul li.topbar-notice-readed a {
+  color: #666
+}
+
+.poly-emm-topbar .topbar-notice .topbar-notice-panel .topbar-notice-body ul li.topbar-notice-readed a .topbar-notice-time {
+  color: #999
+}
+
+.poly-emm-topbar .topbar-notice .topbar-notice-panel .topbar-notice-body .topbar-notice-empty {
+  text-align: center;
+  color: #666;
+  margin-top: 80px
+}
+
+.poly-emm-topbar .topbar-notice .topbar-notice-panel .topbar-notice-foot {
+  height: 50px;
+  line-height: 50px;
+  background: #fff;
+  text-align: center
+}
+
+.poly-emm-topbar .topbar-notice .topbar-notice-panel .topbar-notice-class {
+  padding: 8px 0;
+  float: right
+}
+
+.poly-emm-topbar .topbar-notice .topbar-notice-panel .topbar-notice-class .topbar-notice-class-name {
+  display: block;
+  height: 24px;
+  line-height: 24px;
+  width: 66px;
+  background: #eaedf1;
+  text-align: center;
+  border-radius: 3px
+}
+
+.poly-emm-topbar .topbar-btn-notice {
+  width: auto;
+  display: block;
+  height: 50px
+}
+
+.poly-emm-topbar .topbar-btn-notice .topbar-btn-notice-icon {
+  font-size: 24px;
+  line-height: 50px;
+  vertical-align: text-bottom;
+  color: #fff
+}
+
+.poly-emm-topbar .topbar-btn-notice .topbar-btn-notice-num {
+  font-size: 12px;
+  color: #fff;
+  background: #ff9900;
+  border-radius: 5px;
+  padding: 2px 5px;
+  display: inline-block;
+  margin-top: 15px;
+  line-height: 16px;
+  vertical-align: top;
+  text-align: center
+}
+
+.poly-emm-topbar .topbar-btn-notice .topbar-btn-notice-num.topbar-btn-notice-num-zero {
+  color: #00ace9;
+  background-color: #0087b4
+}
+
+.poly-emm-topbar .topbar-btn-notice .topbar-nav-item-short {
+  padding-left: 2px
+}
+
+.poly-emm-topbar .topbar-qrcode {
+  position: relative;
+  margin-left: 1px
+}
+
+.poly-emm-topbar .topbar-qrcode:hover .topbar-qrcode-panel {
+  display: block
+}
+
+.poly-emm-topbar .topbar-qrcode .topbar-qrcode-panel {
+  top: 50px;
+  left: 0;
+  position: absolute;
+  width: 130px;
+  padding: 12px 8px;
+  background: #fff;
+  border: 1px solid #eaedf1;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  display: none
+}
+
+.poly-emm-topbar .topbar-qrcode .topbar-qrcode-image {
+  width: 100px;
+  margin: 0 auto
+}
+
+.poly-emm-topbar .topbar-qrcode .topbar-qrcode-title {
+  text-align: center;
+  padding-top: 10px
+}
+
+.poly-emm-topbar-search {
+  position: relative;
+  z-index: 1
+}
+
+.poly-emm-topbar-search:hover {
+  background: darken($main-color,10%)
+}
+
+.poly-emm-topbar-search:hover .topbar-search-ask {
+  background: darken($main-color,10%)
+}
+
+.poly-emm-topbar-search .topbar-search-ask {
+  width: 200px;
+  height: 50px;
+  border: 0;
+  background: $main-color;
+  line-height: 26px;
+  padding: 12px 30px 12px 10px;
+  display: block;
+  color: #fff;
+  -webkit-border-radius: 1px 1px;
+  -moz-border-radius: 1px / 1px;
+  border-radius: 1px / 1px;
+  -o-transition: all 0.15s, 0.15s;
+  -ms-transition: all 0.15s, 0.15s;
+  -moz-transition: all 0.15s, 0.15s;
+  -webkit-transition: all 0.15s, 0.15s
+}
+
+.poly-emm-topbar-search .topbar-search-ask:focus {
+  outline: none
+}
+
+.poly-emm-topbar-search .topbar-search-ask-shade {
+  color: #00ace9
+}
+
+.poly-emm-topbar-search .topbar-search-mark {
+  font-size: 16px;
+  line-height: 50px;
+  position: absolute;
+  height: 50px;
+  width: 40px;
+  color: #fff;
+  text-decoration: none;
+  display: block;
+  text-align: center;
+  top: 0;
+  right: 0
+}
+
+.poly-emm-topbar-search .topbar-search-mark .icon-search, .poly-emm-topbar-search .topbar-search-mark .icon-enter {
+  line-height: 50px
+}
+
+.poly-emm-topbar-search.topbar-search-active {
+  background: darken($main-color,10%)
+}
+
+.poly-emm-topbar-search.topbar-search-active .topbar-search-ask {
+  background: darken($main-color,10%)
+}
+
+.poly-emm-topbar-search.topbar-search-active .topbar-search-ask-shade {
+  color: #fff
+}
+
+.poly-emm-topbar-search-v1_3_21 {
+  position: relative
+}
+
+.poly-emm-topbar-search-v1_3_21.topbar-search-dropdown-open .topbar-btn {
+  background: darken($main-color,10%)
+}
+
+.poly-emm-topbar-search-v1_3_21 .icon-search {
+  font-size: 16px;
+  padding-right: 4px;
+  position: relative;
+  top: 2px
+}
+
+.poly-emm-topbar-search-v1_3_21 .topbar-search-dropdown {
+  height: 38px;
+  position: absolute;
+  bottom: -38px;
+  right: -1px;
+  border: 2px solid darken($main-color,10%);
+  background: #fff
+}
+
+.poly-emm-topbar-search-v1_3_21 .topbar-search-dropdown input {
+  display: block;
+  height: 34px;
+  padding: 4px 6px;
+  margin-right: 30px;
+  width: 250px;
+  border-width: 0;
+  outline: 0;
+  line-height: 34px;
+  color: #546478;
+  font-size: 12px
+}
+
+.poly-emm-topbar-search-v1_3_21 .topbar-search-dropdown .topbar-search-mark {
+  position: absolute;
+  right: 0;
+  top: 0;
+  height: 34px;
+  width: 34px;
+  display: block;
+  line-height: 34px;
+  text-align: center;
+  color: #546478
+}

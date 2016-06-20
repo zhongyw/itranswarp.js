@@ -1,0 +1,634 @@
+/**
+ * Created by zhongyw on 2016/3/13.
+ */
+
+@import 'variables';
+.viewFramework-body .console-global-notice .console-global-notice-nav {
+  top: 14px
+}
+
+.viewFramework-body .console-global-notice .console-global-notice-list {
+  margin: 0;
+  height: 40px
+}
+
+.viewFramework-body .console-global-notice .console-global-notice-list .console-global-notice-item {
+  padding: 11px 12px;
+  border: none
+}
+
+.viewFramework-body .console-global-notice .console-global-notice-list .console-global-notice-item .console-global-notice-nomore {
+  top: 10px
+}
+
+.viewFramework-body.viewFramework-topbar-hide {
+  top: 0px
+}
+
+.viewFramework-body.viewFramework-topbar-hide .viewFramework-sidebar {
+  top: 0px
+}
+
+.viewFramework-sidebar {
+  width: 0px;
+  display: none;
+  position: fixed;
+  top: 0px;
+  background-color: $main-bg-color;
+  z-index: 102;
+  overflow-x: hidden;
+
+  .sidebar-content {
+    width: 100%;
+    height: 70px;
+    overflow: auto;
+    overflow-x: hidden
+  }
+
+  .sidebar-trans {
+    transition: all 0.12s ease, 0.12s ease;
+  }
+
+  .sidebar-fold {
+    height: 30px;
+    width: 180px;
+    background: #394555;
+    color: #aeb9c2;
+    text-align: center;
+    line-height: 30px !important;
+    font-size: 12px;
+    user-select: none;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none
+  }
+
+  .sidebar-fold:hover {
+    background: #37424f
+  }
+
+  .sidebar-nav {
+    width: 100%;
+
+    ul {
+      margin: 0px;
+      padding: 0px;
+      list-style: none;
+      overflow: hidden
+    }
+
+    li a {
+      display: block;
+      width: 100%;
+      height: 70px;
+      padding: 0 35px;
+      font-size: 16px;
+      line-height: 70px;
+      text-decoration: none;
+      overflow: hidden;
+      &:hover {
+        background: $main-color;
+
+        .nav-icon,.nav-title{
+          color: #fff;
+        }
+      }
+    }
+
+    .nav-item {
+      position: relative;
+      float:left;
+    }
+    .nav-item.nav-logo{
+      color:#fff;
+      font-size:30px;
+      line-height:70px;
+      margin-right:50px;
+    }
+
+    .nav-comment {
+      background: #2d3945;
+      color: #cccccc;
+      height: 26px;
+      margin-left: 8px;
+      line-height: 26px;
+      padding: 0 7px;
+      vertical-align: middle;
+      position: relative;
+      display: none;
+
+      .icon-arrow-left {
+        position: absolute;
+        left: -14px;
+        line-height: 26px;
+        font-size: 24px;
+        color: #2d3945
+      }
+
+    }
+
+    .nav-tooltip-comment {
+      color: #ccc
+    }
+
+    .sidebar-title {
+      height: 40px;
+      background: darken($main-bg-color, 10%);
+      color: $main-bg-font-color;
+      line-height: 40px;
+      position: relative;
+      cursor: pointer;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      &:hover {
+        background: darken($main-bg-color, 5%);
+      }
+
+      .sidebar-title-icon {
+        display: inline-block;
+        margin: 0 8px 0 20px;
+        vertical-align: middle;
+        transition: transform 0.12s;
+        -o-transition: -o-transform 0.12s;
+        -ms-transition: -ms-transform 0.12s;
+        -moz-transition: -moz-transform 0.12s;
+        -webkit-transition: -webkit-transform 0.12s
+      }
+    }
+    .sidebar-manage {
+      vertical-align: middle;
+      position: absolute;
+      height: 40px;
+      width: 40px;
+      right: 0;
+      a {
+        display: block;
+        width: 100%;
+        height: 100%;
+        text-align: center;
+        line-height: 40px;
+        font-size: 14px;
+        color: #a0abb3;
+        text-decoration: none
+      }
+    }
+  }
+
+  .sidebar-nav-fold {
+    ul {
+      height: 0 !important;
+      overflow: hidden
+    }
+    .sidebar-title-icon {
+      transform: rotate(-90deg);
+      -webkit-transform: rotate(-90deg);
+      -moz-transform: rotate(-90deg);
+      -ms-transform: rotate(-90deg);
+      -o-transform: rotate(-90deg)
+    }
+    .sidebar-title {
+      background: darken($main-bg-color, 10%);
+      border-bottom: 1px solid darken($main-bg-color, 10%);
+    }
+  }
+
+}
+
+
+
+
+
+.viewFramework-sidebar .sidebar-nav .nav-item:hover .nav-comment {
+  display: inline-block
+}
+
+.viewFramework-sidebar .entrance-nav .nav-comment {
+  margin-left: 10px
+}
+
+.viewFramework-sidebar .sidebar-nav .nav-icon {
+  text-align: center;
+  font-size: 40px;
+  color: #aeb9c2
+}
+
+.viewFramework-sidebar .sidebar-nav .nav-title {
+  overflow: hidden;
+  color: #fff;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  text-align:center;
+  display: block;
+}
+
+.viewFramework-sidebar .entrance-nav .nav-title {
+  width: auto
+}
+
+.viewFramework-sidebar .sidebar-nav li.consolehome .nav-tooltip {
+  top: 15px;
+  line-height: 40px
+}
+
+.viewFramework-sidebar .sidebar-nav li.consolehome a {
+  height: 70px;
+  line-height: 70px;
+  background: #293038
+}
+
+.viewFramework-sidebar .sidebar-nav li.consolehome a .nav-icon {
+  font-size: 20px
+}
+
+.viewFramework-sidebar .sidebar-nav li.consolehome.active a {
+  background: #293038
+}
+
+.viewFramework-sidebar .sidebar-nav li.active a {
+  background: $main-color;
+  color: #fff;
+}
+
+.viewFramework-sidebar .sidebar-nav li.active a .nav-title {
+  color: #fff
+}
+
+.viewFramework-sidebar .sidebar-nav li.active a .nav-icon {
+  color: #fff
+}
+
+.viewFramework-sidebar .sidebar-nav .manage-nav {
+  height: 30px;
+  overflow: hidden
+}
+
+.viewFramework-sidebar .sidebar-nav .manage-nav:hover .nav-icon {
+  color: #fff
+}
+
+.viewFramework-sidebar .sidebar-nav .manage-nav a {
+  display: block;
+  height: 100%
+}
+
+.viewFramework-sidebar .sidebar-nav .manage-nav .nav-icon {
+  height: 100%;
+  line-height: 30px;
+  font-size: 16px
+}
+
+.viewFramework-sidebar .sidebar-nav .manage-nav .nav-title {
+  margin-top: 14px;
+  background: #293038;
+  height: 1px;
+  width: 120px
+}
+
+.viewFramework-sidebar .sidebar-nav .more-nav {
+  display: block;
+  width: 100%;
+  height: 40px;
+  line-height: 40px;
+  position: relative
+}
+
+.viewFramework-sidebar .sidebar-nav .more-nav.open .more-nav-switch {
+  background: $main-color
+}
+
+.viewFramework-sidebar .sidebar-nav .more-nav.open .more-nav-switch .nav-icon, .viewFramework-sidebar .sidebar-nav .more-nav.open .more-nav-switch .nav-title {
+  color: #fff
+}
+
+.viewFramework-sidebar .sidebar-nav .more-nav.open .more-nav-switch:hover {
+  background: $main-color
+}
+
+.viewFramework-sidebar .sidebar-nav .more-nav.open .icon-up {
+  display: none
+}
+
+.viewFramework-sidebar .sidebar-nav .more-nav.open .icon-down {
+  display: inline-block
+}
+
+.viewFramework-sidebar .sidebar-nav .more-nav .icon-up {
+  display: inline-block
+}
+
+.viewFramework-sidebar .sidebar-nav .more-nav .icon-down {
+  display: none
+}
+
+.viewFramework-sidebar .sidebar-nav .more-nav .more-nav-switch {
+  display: block;
+  width: 100%;
+  height: 40px;
+  line-height: 40px
+}
+
+.viewFramework-sidebar .sidebar-nav .more-nav .more-nav-switch:hover {
+  background: #425160
+}
+
+.viewFramework-sidebar .sidebar-nav .more-nav .more-nav-switch:hover .nav-icon, .viewFramework-sidebar .sidebar-nav .more-nav .more-nav-switch:hover .nav-title {
+  color: #fff
+}
+
+.viewFramework-sidebar .sidebar-nav .more-nav .more-nav-container {
+  background: #425160;
+  position: absolute;
+  bottom: 40px;
+  top: auto;
+  border: none;
+  border-radius: 0 0;
+  box-shadow: none;
+  margin: 0;
+  width: 100%
+}
+
+.viewFramework-sidebar .sidebar-nav .more-nav .more-nav-container a {
+  color: #fff;
+  text-decoration: none
+}
+
+.viewFramework-sidebar .sidebar-nav .more-nav .more-nav-container .more-nav-item {
+  display: block;
+  height: 40px;
+  line-height: 40px
+}
+
+.viewFramework-sidebar .sidebar-nav .more-nav .more-nav-container .more-nav-item:hover {
+  background: #3a4856
+}
+
+.viewFramework-sidebar .sidebar-nav .more-nav .more-nav-container .more-nav-item:hover .more-nav-item-icon {
+  color: #aeb9c2
+}
+
+.viewFramework-sidebar .sidebar-nav .more-nav .more-nav-container .more-nav-item-icon {
+  width: 50px;
+  display: inline-block;
+  vertical-align: text-top;
+  text-align: center;
+  color: #546478
+}
+
+.viewFramework-sidebar .sidebar-nav .more-nav .more-nav-container .more-nav-item.active {
+  background: #2d3945
+}
+
+.viewFramework-sidebar .sidebar-nav .more-nav .more-nav-container .more-nav-item.active .more-nav-item-icon {
+  color: #0099cc
+}
+
+.viewFramework-sidebar .sidebar-nav .more-nav .more-nav-close {
+  height: 20px;
+  background: $main-color;
+  text-align: right;
+  line-height: 20px;
+  cursor: pointer
+}
+
+.viewFramework-sidebar .sidebar-nav .more-nav .more-nav-close .icon-down {
+  text-align: left;
+  width: 32px;
+  display: inline-block;
+  color: #80cce6;
+  vertical-align: middle
+}
+
+.viewFramework-sidebar-mini .viewFramework-sidebar {
+  width: 50px;
+  display: block
+}
+
+.viewFramework-sidebar-mini .viewFramework-sidebar .sidebar-content {
+  width: 70px
+}
+
+.viewFramework-sidebar-mini .viewFramework-sidebar .sidebar-fold {
+  width: 50px
+}
+
+.viewFramework-sidebar-mini .viewFramework-sidebar .sidebar-nav {
+  width: 50px
+}
+
+.viewFramework-sidebar-mini .viewFramework-sidebar .sidebar-nav .nav-item a:hover + .nav-tooltip {
+  display: block
+}
+
+.viewFramework-sidebar-mini .viewFramework-sidebar .sidebar-nav .nav-title {
+  display: none
+}
+
+.viewFramework-sidebar-mini .viewFramework-sidebar .sidebar-nav .more-nav .more-nav-switch:hover {
+  background: #425160 !important
+}
+
+.viewFramework-sidebar-mini .viewFramework-sidebar .sidebar-nav .more-nav.open .more-nav-switch {
+  background: #425160 !important
+}
+
+.viewFramework-sidebar-mini .viewFramework-sidebar .sidebar-nav .more-nav .more-nav-container {
+  bottom: 0px;
+  left: 50px;
+  width: 180px
+}
+
+.viewFramework-sidebar-mini .viewFramework-sidebar .sidebar-nav .more-nav .more-nav-container .more-nav-item {
+  display: block;
+  height: 40px;
+  line-height: 40px
+}
+
+.viewFramework-sidebar-mini .viewFramework-sidebar .sidebar-nav .more-nav .more-nav-container .more-nav-item-icon {
+  width: 50px;
+  padding-left: 0
+}
+
+.viewFramework-sidebar-mini .viewFramework-sidebar .sidebar-nav .more-nav .more-nav-close {
+  display: none
+}
+
+.viewFramework-sidebar-mini .viewFramework-sidebar .sidebar-nav li.consolehome a :hover {
+  background: #425160
+}
+
+.viewFramework-sidebar-mini .viewFramework-sidebar .sidebar-title .sidebar-title-text {
+  display: none
+}
+
+.viewFramework-sidebar-mini .viewFramework-sidebar .sidebar-title-inner:hover + .nav-tooltip {
+  display: block
+}
+
+.viewFramework-sidebar-mini .viewFramework-sidebar .sidebar-manage {
+  display: none
+}
+
+.viewFramework-sidebar-mini .viewFramework-sidebar .entrance-nav .nav-item:hover .nav-comment {
+  display: none
+}
+
+.viewFramework-sidebar-full .viewFramework-sidebar {
+  width: 100%;
+  display: block
+}
+
+.viewFramework-sidebar-full .viewFramework-sidebar .sidebar-nav .nav-icon {
+height:60px;
+}
+
+.viewFramework-sidebar-mini .viewFramework-product {
+  left: 50px
+}
+
+.viewFramework-sidebar-full .viewFramework-product {
+  left: 0px
+}
+
+.viewFramework-sidebar-dialog .modal-dialog {
+  width: 730px
+}
+
+.viewFramework-sidebar-dialog .modal-dialog .modal-title {
+  user-select: none;
+  -webkit-user-select: none
+}
+
+.viewFramework-sidebar-manage .sidebar-item-list {
+  padding: 4px 0 0 0;
+  height: auto
+}
+
+.viewFramework-sidebar-manage .sidebar-item-list-picked .sidebar-item {
+  border: 1px solid #37a9d5
+}
+
+.viewFramework-sidebar-manage .sidebar-item-list-picked .sidebar-item .sidebar-item-opt-icon {
+  display: block
+}
+
+.viewFramework-sidebar-manage .sidebar-item-list-picked .sidebar-item .sidebar-item-icon {
+  color: #516176
+}
+
+.viewFramework-sidebar-manage .sidebar-config-title {
+  padding-left: 6px;
+  user-select: none;
+  -webkit-user-select: none
+}
+
+.viewFramework-sidebar-manage .sidebar-item-wrap {
+  padding: 6px;
+  width: 33.3%;
+  float: left;
+  user-select: none;
+  -webkit-user-select: none
+}
+
+.viewFramework-sidebar-manage .sidebar-item-wrap.on-drag-hover .sidebar-item {
+  border: 1px dashed #ddd
+}
+
+.viewFramework-sidebar-manage .sidebar-item {
+  height: 32px;
+  padding: 4px;
+  line-height: 24px;
+  background: #fff;
+  border: 1px solid #d3dce3;
+  position: relative;
+  cursor: pointer;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  -o-transition: all 0.1s, 0.1s;
+  -ms-transition: all 0.1s, 0.1s;
+  -moz-transition: all 0.1s, 0.1s;
+  -webkit-transition: all 0.1s, 0.1s
+}
+
+.viewFramework-sidebar-manage .sidebar-item:hover {
+  border: 1px solid #37a9d5
+}
+
+.viewFramework-sidebar-manage .sidebar-item:hover .sidebar-item-opt-icon {
+  display: block
+}
+
+.viewFramework-sidebar-manage .sidebar-item .sidebar-item-icon {
+  color: #aeb9c2;
+  vertical-align: text-bottom;
+  font-size: 16px;
+  margin-right: 2px
+}
+
+.viewFramework-sidebar-manage .sidebar-item .sidebar-item-opt-icon {
+  display: none;
+  position: absolute;
+  height: 30px;
+  width: 30px;
+  right: 0;
+  top: 0;
+  line-height: 30px;
+  text-align: center;
+  border-left: 1px solid #37a9d5;
+  color: #37a9d5;
+  font-size: 14px
+}
+
+.viewFramework-sidebar-manage .sidebar-config-gap {
+  border: 1px dashed #e8ecf0;
+  margin: 16px 5px;
+  user-select: none;
+  -webkit-user-select: none
+}
+
+.poly-emm-sidebar-tooltip {
+  position: absolute;
+  z-index: 1030;
+  display: block;
+  font-size: 12px;
+  line-height: 1.4;
+  opacity: 0;
+  filter: alpha(opacity=0);
+  visibility: visible
+}
+
+.poly-emm-sidebar-tooltip .tooltip-inner {
+  max-width: 200px;
+  padding: 12px 8px;
+  color: #ffffff;
+  text-align: center;
+  text-decoration: none;
+  border-radius: 0 0;
+  background-color: #425160
+}
+
+.poly-emm-sidebar-tooltip .tooltip-arrow {
+  position: absolute;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid
+}
+
+.poly-emm-sidebar-tooltip.in {
+  opacity: 0.9;
+  filter: alpha(opacity=90)
+}
+
+.poly-emm-sidebar-tooltip.right {
+  padding: 0 5px;
+  margin-left: 3px
+}
+
+.poly-emm-sidebar-tooltip.right .tooltip-arrow {
+  top: 50%;
+  left: 0;
+  margin-top: -5px;
+  border-right-color: #425160;
+  border-width: 5px 5px 5px 0
+}

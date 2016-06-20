@@ -1,0 +1,26 @@
+@import 'variables';
+.dashboard{
+   padding:10px;
+  .status{
+
+    .item{
+      float:left;
+      .num{
+        font-size:60px;
+        line-height:50px;
+        font-weight:bold;
+        float:left;
+      }
+      .info{
+        margin-left:5px;
+        padding-top:5px;
+        vertical-align: center;
+        line-height:22px;
+        float:left;
+        .icon-square.high{color:red;}
+        .icon-square.med{color:orange;}
+        .icon-square.low{color:green;}
+      }
+    }
+  }
+}

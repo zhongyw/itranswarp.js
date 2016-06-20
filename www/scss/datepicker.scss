@@ -1,0 +1,44 @@
+@import 'variables';
+.emm-timepicker {
+  display: -moz-inline-stack;
+  display: inline-block;
+  vertical-align: middle;
+  *vertical-align: auto;
+  zoom: 1;
+  *display: inline;
+  vertical-align: middle;
+
+}
+
+.emm-datepicker {
+  padding: 8px;
+  thead .h6 th {
+    padding-top: 8px
+  }
+  tbody{
+    tr:first-child td {
+      padding-top: 8px
+    }
+    .btn {
+      border: 0px !important
+    }
+    .btn:hover {
+      background: #F3F3F3
+    }
+    .btn-default {
+      background: transparent
+    }
+    .active, .console-datepicker tbody .active:hover, .console-datepicker tbody .active span {
+      background: #3C0;
+      color: #FFF
+    }
+    .btn[disabled="disabled"] .btn[disabled="disabled"] span {
+      color: #CCC
+    }
+  }
+  em {
+    font-size: 12px;
+    color: #ACD
+  }
+
+}
