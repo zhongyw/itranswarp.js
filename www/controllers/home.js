@@ -352,6 +352,9 @@ module.exports = {
         }
         this.render(getView('user/profile.html'), yield $getModel.apply(this, [model]));
     },
+    'GET /weixin/location': function* (){
+        this.render(getView('weixin/location.html'), yield $getModel.apply(this, [{}]));
+    },
 
     'GET /auth/signin': function* (id) {
         var
