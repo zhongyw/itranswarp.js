@@ -48,6 +48,7 @@ function calcScaleSize(origin_width, origin_height, resize_width, resize_height,
 function getImageInfo(buffer, callback) {
     var i = gm(buffer);
     i.format(function (err, format) {
+        console.log("error:" + err);
         if (err) {
             return callback(api.invalidParam('image', 'Invalid image data'));
         }

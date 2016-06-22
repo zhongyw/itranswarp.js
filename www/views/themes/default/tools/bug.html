@@ -66,7 +66,7 @@
                     <input value="" ng-model="svn">
                 </div>
                 <div class="text-right">
-                    <button ng-click="clearForm()" class="btn btn-xs btn-danger">清空</button></span>
+                    <button ng-click="clearForm()" class="btn btn-xs btn-danger">清空</button>
                 </div>
             </div>
             <div class="col-sm-4 text-right">
@@ -75,6 +75,7 @@
                 <div class="m10">@RootCause：<span class="c-red" ng-bind="rootCause"></span></div>
                 <div class="m10">@Solution：<span class="c-red" ng-bind="solution"></span></div>
                 <div class="m10">@CodeReview：<span class="c-red code-review-show" ng-bind="codeReview"></span></div>
+                <div class="m10"><button ng-click="copy()" class="btn btn-xs btn-primary">复制</button></div>
             </div>
             <div class="col-sm-4 text-right">
                 <div class="m10">@svn：<span class="c-red" ng-bind="svn"></span></div>
