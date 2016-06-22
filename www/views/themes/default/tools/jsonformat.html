@@ -3,95 +3,85 @@
 {% block title %}{{ _('JsonFormat') }}{% endblock %}
 
 {% block head %}
-<link rel="stylesheet" type="text/css" href="/static/css/boots.css"/>
-
+<link href="/static/css/boots.css" rel="stylesheet" type="text/css"/>
+<link href="/static/css/tools/jsonformat.css" rel="stylesheet" type="text/css"/>
 {% endblock %}
 
 {% block content %}
-<div class="no-skin" ng-app="myAppModule">
-
-    <div id="main-container" class="main-container">
-
-
-        <div class="main-content">
-            <div ng-controller="myAppController as vm" class="main-content-inner">
-                <div class="m10 col-sm-4">
-                    <div id="header2" class="text-right">
-                        <label>
-                            <select ng-model="commitType">
-                                <option value="Bug" selected="selected">Bug</option>
-                                <option value="Task">Task</option>
-                                <option value="Improvement">Improvement</option>
-                            </select>：
-                        </label>
-                        <input value="" ng-model="bug">
-
-                    </div>
-                    <div class="text-right">
-                        <label class="ml10">jira url:</label>
-                        <input value="" ng-model="jiraUrl">
-                        <!--<button ng-click="fetchJiraData()" class="btn btn-xs btn-success">获取Jira信息</button>-->
-                    </div>
-                    <div class="text-right">
-                        <label class="">Title：</label>
-                        <input value="" ng-model="title"></input>
-                    </div>
-                    <div class="m10 text-right">
-                        <label >RootCause:</label>
-                        <input value="" ng-model="rootCause"></input>
-                    </div>
-                    <div class="m10 text-right">
-                        <label>Solution：</label>
-                        <input value="" ng-model="solution"></input>
-                    </div>
-                    <div class="m10 text-right">
-                        <label>CodeReview：</label>
-                        <select ng-model="codeReview" ng-change="crchange(codeReview)">
-                            <option value="zhangyq">zhangyq</option>
-                            <option value="sunxk">sunxk</option>
-                            <option value="zhangyh">zhangyh</option>
-                            <option value="liujia">liujia</option>
-                            <option value="zhangzf">zhangzf</option>
-                            <option value="jial">jial</option>
-                            <option value="lizj">lizj</option>
-                            <option value="shihy">shihy</option>
-                            <option value="fuxl">fuxl</option>
-                            <option value="zhaohz">zhaohz</option>
-                            <option value="liuxh">liuxh</option>
-                        </select>
-
-                    </div>
-                    <div class="text-right">
-                        <label class="ml20 c-red">svn：</label>
-                        <input value="" ng-model="svn">
-                    </div>
-                    <div class="text-right">
-                        <button ng-click="clearForm()" class="btn btn-xs btn-danger">清空</button>
-                    </div>
-                </div>
-                <div class="col-sm-4 text-right">
-                    <div class="m10">@<span ng-bind="commitType"></span>：<span class="c-red" ng-bind="bug"></span></div>
-                    <div class="m10">@Title：<span class="c-red" ng-bind="title"></span></div>
-                    <div class="m10">@RootCause：<span class="c-red" ng-bind="rootCause"></span></div>
-                    <div class="m10">@Solution：<span class="c-red" ng-bind="solution"></span></div>
-                    <div class="m10">@CodeReview：<span class="c-red code-review-show" ng-bind="codeReview"></span></div>
-                    <div class="m10"><button ng-click="copy()" class="btn btn-xs btn-primary">复制</button></div>
-                </div>
-                <div class="col-sm-4 text-right">
-                    <div class="m10">@svn：<span class="c-red" ng-bind="svn"></span></div>
-                    <div class="m10">@RootCause：<span class="c-red" ng-bind="rootCause"></span></div>
-                    <div class="m10">@Solution：<span class="c-red" ng-bind="solution"></span></div>
-                    <div class="m10">@CodeReview：<span class="c-red code-review-show" ng-bind="codeReview"></span></div>
-                </div>
-
-
-                <script type="text/javascript" src="/static/js/angular-1.2.19/angular.js"></script>
-                <script type="text/javascript" src="/static/js/angular-1.2.19/angular-sanitize.js"></script>
-                <script src="/static/js/tools/bug_jira.js"></script>
-            </div>
-        </div>
-    </div><!-- basic scripts -->
-
-
+<div class="HeadersRow col-xs-3 mt10">
+    <textarea id="RawJson" onchange="Process()" style="height:1000px;">
+    </textarea>
 </div>
+<div id="ControlsRow col-xs-9">
+    <input class="btn btn-primary btn-xs" onclick="Process()" type="Button" value="格式化"/>
+    <span id="TabSizeHolder">
+        tab大小:
+        <select id="TabSize" onchange="TabSizeChanged()">
+            <option value="1">
+                1
+            </option>
+            <option selected="true" value="2">
+                2
+            </option>
+            <option value="3">
+                3
+            </option>
+            <option value="4">
+                4
+            </option>
+            <option value="5">
+                5
+            </option>
+            <option value="6">
+                6
+            </option>
+        </select>
+    </span>
+    <label for="QuoteKeys">
+        <input checked="true" id="QuoteKeys" onclick="QuoteKeysClicked()" type="checkbox"/>
+        键引号
+    </label>
+    <a href="javascript:void(0);" onclick="SelectAllClicked()">
+        选择全部
+    </a>
+    <span id="CollapsibleViewHolder">
+        <label for="CollapsibleView">
+            <input checked="true" id="CollapsibleView" onclick="CollapsibleViewClicked()" type="checkbox"/>
+            收缩视图
+        </label>
+    </span>
+    <span id="CollapsibleViewDetail">
+        <a href="javascript:void(0);" onclick="ExpandAllClicked()">
+            展开全部
+        </a>
+        <a href="javascript:void(0);" onclick="CollapseAllClicked()">
+            收缩全部
+        </a>
+        <a href="javascript:void(0);" onclick="CollapseLevel(3)">
+            层级 2+
+        </a>
+        <a href="javascript:void(0);" onclick="CollapseLevel(4)">
+            层级 3+
+        </a>
+        <a href="javascript:void(0);" onclick="CollapseLevel(5)">
+            层级 4+
+        </a>
+        <a href="javascript:void(0);" onclick="CollapseLevel(6)">
+            层级 5+
+        </a>
+        <a href="javascript:void(0);" onclick="CollapseLevel(7)">
+            层级 6+
+        </a>
+        <a href="javascript:void(0);" onclick="CollapseLevel(8)">
+            层级 7+
+        </a>
+        <a href="javascript:void(0);" onclick="CollapseLevel(9)">
+            层级 8+
+        </a>
+    </span>
+</div>
+<div class="Canvas" id="Canvas">
+</div>
+<script type="text/javascript" src="/static/js/jsonFormatter.min.js"></script>
+<script type="text/javascript" src="/static/js/tools/jsonformat.js"></script>
 {% endblock %}
