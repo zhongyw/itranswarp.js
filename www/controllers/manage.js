@@ -272,15 +272,6 @@ module.exports = {
             }
         }));
     },
-    'GET /manage/user/user_create': function* () {
-        this.render('manage/user/user_create.html', yield $getModel({
-            form: {
-                name: 'Create User',
-                action: '/api/users',
-                redirect: 'user_list'
-            }
-        }));
-    },
 
     // navigation /////////////////////////////////////////////////////////////
 

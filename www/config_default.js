@@ -2,7 +2,7 @@
 
 /*
  * This is the default configuration for iTranswarp.js.
- * 
+ *
  * DO NOT change it. Instead, make a copy and rename to:
  * "config_development.js" which is enabled in development environment.
  * "config_production.js" which is enabled in production environment.
@@ -10,7 +10,7 @@
  */
 module.exports = {
     // server domain name:
-    domain: 'www.example.com',
+    domain: 'www.nbn8.com',
     // the theme used, default to 'default':
     theme: 'default',
     session: {
@@ -24,15 +24,15 @@ module.exports = {
     },
     db: {
         // host or ip address of mysql, e.g. '192.168.1.123':
-        host: 'localhost',
+        host: '101.200.142.86',
         // port of mysql, default to 3306:
         port: 3306,
         // user to login to mysql, change to your mysql user:
-        user: 'subox',
+        user: 'zhongyw',
         // password to login to mysql, change to your mysql password:
-        password: 'subox@2016',
+        password: 'zhongyw@2016g00d',
         // database used in mysql, default to 'itranswarp':
-        database: 'itranswarp',
+        database: 'zhongywdb',
         // timeout before initial a connection to mysql, default to 3 seconds:
         connectTimeout: 3000,
         // maximum concurrent db connections:

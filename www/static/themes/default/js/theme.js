@@ -177,7 +177,9 @@ function initCommentArea(ref_type, ref_id, tag) {
     });
 }
 
-var signinModal = null;
+var signinModal = null,
+    signupModal = null;
+
 
 function showSignin(forceModal) {
     if (g_signins.length === 1 && !forceModal) {
@@ -191,6 +193,15 @@ function showSignin(forceModal) {
     }
     signinModal.show();
 }
+function showSignup(forceModal) {
+
+    signupModal = UIkit.modal('#modal-signup', {
+        bgclose: false,
+        center: true
+    });
+    signupModal.show();
+}
+
 
 // JS Template:
 
@@ -736,3 +747,59 @@ function authFrom(provider) {
         location.assign(url);
     }
 }
+
+
+$(function() {
+    var vmSignIn = new Vue({
+      el: '#form-sign-up',
+      data: {
+          email: '',
+          passwd: '',
+          cpasswd: ''
+      },
+      methods: {
+        signUp: function(event){
+          event.preventDefault();
+          var
+              $form = $('#form-sign-up'),
+              email = this.email.trim().toLowerCase(),
+              data = {
+                  email: email,
+                  passwd: this.passwd==='' ? '' : CryptoJS.SHA1(email + ':' + this.passwd).toString()
+              };
+          $form.postJSON('/api/signUp', data, function(err, result) {
+              if (! err) {
+                  location.assign('');
+              }
+          });
+        }
+      }
+    });
+    var vmAuth = new Vue({
+        el: '#form-auth',
+        data: {
+            email: '',
+            passwd: ''
+        },
+        methods: {
+            onSubmit: function(event) {
+                event.preventDefault();
+                var
+                    $form = $('#form-auth'),
+                    email = this.email.trim().toLowerCase(),
+                    data = {
+                        email: email,
+                        passwd: this.passwd==='' ? '' : CryptoJS.SHA1(email + ':' + this.passwd).toString()
+                    };
+                $form.postJSON('/api/authenticate', data, function(err, result) {
+                    if (! err) {
+                        location.assign('');
+                    }
+                });
+            },
+            goSignup: function(event){
+              showSignup();
+            }
+        }
+    });
+});

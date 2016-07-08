@@ -13,6 +13,7 @@
     <script src="/static/js/uikit/components/htmleditor.js"></script>
     <script src="/static/js/vue.min.js"></script>
     <script src="/static/js/itranswarp.js"></script>
+  
 <style>
 #vm {
     display: none;
@@ -192,16 +193,16 @@ function uploadImage(callback) {
             <div class="uk-navbar uk-navbar-attached">
                 {% if __show_navigations__ %}
                 <a href="/" target="_blank" class="uk-navbar-brand"><i class="uk-icon-home"></i></a>
-                <ul id="ul-navbar" class="uk-navbar-nav"><!--<li><a href="/manage/discuss/">{{ _('Discuss') }}</a></li>-->
-                    <!--<li><a href="/manage/discuss/">{{ _('Discuss') }}</a></li>-->
+                <ul id="ul-navbar" class="uk-navbar-nav"><li><a href="/manage/discuss/">{{ _('Discuss') }}</a></li>
+                    <li><a href="/manage/discuss/">{{ _('Discuss') }}</a></li>
                     <li><a href="/manage/article/">{{ _('Articles') }}</a></li>
-                    <!--<li><a href="/manage/webpage/">{{ _('Web Pages') }}</a></li>
+                    <li><a href="/manage/webpage/">{{ _('Web Pages') }}</a>
                     <li><a href="/manage/wiki/">{{ _('Wikis') }}</a></li>
-                    <li><a href="/manage/attachment/">{{ _('Attachments') }}</a></li>-->
+                    <li><a href="/manage/attachment/">{{ _('Attachments') }}</a></li>
                     <li><a href="/manage/user/">{{ _('Users') }}</a></li>
-                    <!--<li><a href="/manage/navigation/">{{ _('Navigations') }}</a></li>-->
+                    <li><a href="/manage/navigation/">{{ _('Navigations') }}</a></li>
                     <li><a href="/manage/setting/">{{ _('Settings') }}</a></li>
-                     <!--<li><a href="/manage/api/">API</a></li>-->
+                     <li><a href="/manage/api/">API</a></li>
                 </ul>
                 <div class="uk-navbar-flip">
                     <ul class="uk-navbar-nav">

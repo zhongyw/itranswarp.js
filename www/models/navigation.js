@@ -8,6 +8,7 @@ module.exports = function (warp) {
     return base.defineModel(warp, 'Navigation', [
         base.column_varchar_100('name'),
         base.column_varchar_1000('url'),
+        base.column_varchar_50("parent_id"),
         base.column_bigint('display_order')
     ], {
         table: 'navigations'

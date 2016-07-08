@@ -218,7 +218,8 @@ var schemas = {
         type: 'object',
         properties: {
             name: PROPERTY.NAME,
-            url: PROPERTY.URL
+            url: PROPERTY.URL,
+            parent_id: PROPERTY.ID
         },
         required: ['name', 'url']
     },

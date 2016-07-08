@@ -19,14 +19,14 @@ env.user = 'root'
 # env.hosts = ['www.liaoxuefeng.com', 'www.liaoxuefeng.com:23']
 
 # linux mysql user and password:
-db_user = 'www'
-db_password = 'www'
+db_user = 'zhongyw'
+db_password = 'zhongyw@2016g00d'
 
 _TAR_FILE = 'dist-itranswarp.tar.gz'
 
 _REMOTE_TMP_TAR = '/tmp/%s' % _TAR_FILE
 
-_REMOTE_BASE_DIR = '/srv/itranswarp'
+_REMOTE_BASE_DIR = '/srv/zhongyongwei'
 
 def _current_path():
     return os.path.abspath('.')
@@ -43,7 +43,7 @@ def backup():
     dt = _now()
     f = 'backup-itranswarp-%s.sql' % dt
     with cd('/tmp'):
-        run('mysqldump --user=%s --password=%s --skip-opt --add-drop-table --default-character-set=utf8 --quick itranswarp > %s' % (db_user, db_password, f))
+        run('mysqldump --user=%s --password=%s --skip-opt --add-drop-table --default-character-set=utf8 --quick zhongywdb > %s' % (db_user, db_password, f))
         run('tar -czvf %s.tar.gz %s' % (f, f))
         get('%s.tar.gz' % f, '%s/backup/' % _current_path())
         run('rm -f %s' % f)
@@ -72,7 +72,7 @@ def scp():
     with cd('%s/%s' % (_REMOTE_BASE_DIR, newdir)):
         run('tar -xzvf %s' % _REMOTE_TMP_TAR)
     with cd(_REMOTE_BASE_DIR):
-        run('rm -f www')
+        run('rm -rf www')
         run('ln -s %s www' % newdir)
         run('chown www-data:www-data www')
         run('chown -R www-data:www-data %s' % newdir)

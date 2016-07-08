@@ -110,6 +110,7 @@ function initVM(navigations) {
                 <tr v-repeat="n: navigations">
                     <td><a v-text="n.name" v-attr="href: n.url" target="_blank"></a></td>
                     <td><a v-text="n.url" v-attr="href: n.url" target="_blank"></a></td>
+                    <td><span v-text="n.parent_id"></span></td>
                     <td><span v-text="n.created_at.toDateTime()"></span></td>
                     <td>
                         <a v-on="click: moveUp(n.id)" title="Move this navigation up" href="#0" class="x-btn"><i class="uk-icon-arrow-up"></i></a>

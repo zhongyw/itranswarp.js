@@ -24,10 +24,12 @@
 <head>
     <meta charset="utf-8" />
     <title>{% block title %} ??? {% endblock %} - {{ __website__.name }}</title>
+    <link rel="shortcut icon" href="/favicon.ico?v=4f32ecc8f43d">
     <meta name="viewport" content="width=device-width" />
     <meta name="keywords" content="{{ __website__.keywords }}" />
     <meta name="description" content="{{ __website__.description }}" />
     <meta property="x-nav" content="{% block nav %}/{% endblock %}" />
+    <meta property="wb:webmaster" content="f89e4bdea723c09c" />
     <link rel="alternate" href="/feed" title="{{ __website__.name }}" type="application/rss+xml" />
     {% block meta %}<!-- meta here -->{% endblock %}
     <!-- BEGIN CSS COMPRESS -->
@@ -48,6 +50,8 @@
     <script src="/static/js/uikit/components/tooltip.js"></script>
     <script src="/static/js/uikit/components/slideshow.js"></script>
     <script src="/static/js/uikit/components/htmleditor.js"></script>
+    <script src="/static/js/sha1.min.js"></script>
+    <script src="/static/js/vue.min.js"></script>
     <script src="/static/js/codemirror.js"></script>
     <script src="/static/js/highlight.js"></script>
     <script src="/static/themes/default/js/theme.js"></script>
@@ -170,6 +174,24 @@
 </head>
 
 <body>
+    <script>
+      window.fbAsyncInit = function() {
+        FB.init({
+          appId      : '1229544160397328',
+          xfbml      : true,
+          version    : 'v2.6'
+        });
+      };
+
+      (function(d, s, id){
+         var js, fjs = d.getElementsByTagName(s)[0];
+         if (d.getElementById(id)) {return;}
+         js = d.createElement(s); js.id = id;
+         js.src = "//connect.facebook.net/en_US/sdk.js";
+         fjs.parentNode.insertBefore(js, fjs);
+       }(document, 'script', 'facebook-jssdk'));
+    </script>
+
     <div class="x-goto-top">
         <div class="x-arrow"></div>
         <div class="x-stick"></div>
@@ -314,29 +336,207 @@
                     <p>
                         <a href="/">{{ __website__.name }}</a>&copy;2016
                     </p>
+                    <div
+                      class="fb-like"
+                      data-share="true"
+                      data-width="450"
+                      data-show-faces="true">
+                    </div>
                 </div>
 
             </div>
         </div>
     </div>
-
+    <!-- sigin in -->
     <div id="modal-signin" class="uk-modal">
         <div class="uk-modal-dialog">
             <a class="uk-modal-close uk-close"></a>
             <div class="uk-modal-header">
-                <h2>{{ _('Please Sign In') }}</h2>
+                <h2>请登录</h2>
             </div>
-            <p>You can sign in directly without register:</p>
+            <form id="form-auth" v-on="submit: onSubmit" class="uk-form uk-form-stack">
+              <div class="uk-alert uk-alert-danger uk-hidden"></div>
+              <div class="uk-form-row">
+                  <label class="uk-form-label" for="email">Email:</label>
+                  <div class="uk-form-controls">
+                      <div class="uk-form-icon">
+                          <i class="uk-icon-envelope-o"></i>
+                          <input v-model="email" type="text" id="email" name="email" maxlength="50" style="width:300px" placeholder="email@example.com">
+                      </div>
+                  </div>
+              </div>
+              <div class="uk-form-row">
+                  <label class="uk-form-label" for="passwd">密码:</label>
+                  <div class="uk-form-controls">
+                      <div class="uk-form-icon">
+                          <i class="uk-icon-lock"></i>
+                          <input v-model="passwd" type="password" id="passwd" name="passwd" maxlength="50" style="width:300px" placeholder="密码">
+                      </div>
+                  </div>
+              </div>
+              <div class="uk-form-row">
+                  <div class="uk-form-controls">
+                      <button type="submit" class="uk-button uk-button-primary"><i class="uk-icon-sign-in"></i> 登录</button>
+                      <button type="button" onClick="showSignup()" class="uk-button uk-button-primary"><i class="uk-icon-user-plus"></i> 注册</button>
+                  </div>
+              </div>
+              <div class="uk-form-row">
+                  <div class="uk-form-controls">
+                      <i class="uk-icon-question-circle"></i> <a href="/auth/forgot">Forgot password</a>
+                  </div>
+              </div>
+          </form>
+
+          <script>
+          // This is called with the results from from FB.getLoginStatus().
+          function statusChangeCallback(response) {
+            console.log('statusChangeCallback');
+            console.log(response);
+            // The response object is returned with a status field that lets the
+            // app know the current login status of the person.
+            // Full docs on the response object can be found in the documentation
+            // for FB.getLoginStatus().
+            if (response.status === 'connected') {
+              // Logged into your app and Facebook.
+              testAPI();
+            } else if (response.status === 'not_authorized') {
+              // The person is logged into Facebook, but not your app.
+              document.getElementById('status').innerHTML = 'Please log ' +
+                'into this app.';
+            } else {
+              // The person is not logged into Facebook, so we're not sure if
+              // they are logged into this app or not.
+              document.getElementById('status').innerHTML = 'Please log ' +
+                'into Facebook.';
+            }
+          }
+
+          // This function is called when someone finishes with the Login
+          // Button.  See the onlogin handler attached to it in the sample
+          // code below.
+          function checkLoginState() {
+            FB.getLoginStatus(function(response) {
+              statusChangeCallback(response);
+            });
+          }
+
+          window.fbAsyncInit = function() {
+          FB.init({
+            appId      : '1229544160397328',
+            cookie     : true,  // enable cookies to allow the server to access
+                                // the session
+            xfbml      : true,  // parse social plugins on this page
+            version    : 'v2.5' // use graph api version 2.5
+          });
+
+          // Now that we've initialized the JavaScript SDK, we call
+          // FB.getLoginStatus().  This function gets the state of the
+          // person visiting this page and can return one of three states to
+          // the callback you provide.  They can be:
+          //
+          // 1. Logged into your app ('connected')
+          // 2. Logged into Facebook, but not your app ('not_authorized')
+          // 3. Not logged into Facebook and can't tell if they are logged into
+          //    your app or not.
+          //
+          // These three cases are handled in the callback function.
+
+          FB.getLoginStatus(function(response) {
+            statusChangeCallback(response);
+          });
+
+          };
+
+          // Load the SDK asynchronously
+          (function(d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) return;
+            js = d.createElement(s); js.id = id;
+            js.src = "//connect.facebook.net/en_US/sdk.js";
+            fjs.parentNode.insertBefore(js, fjs);
+          }(document, 'script', 'facebook-jssdk'));
+
+          // Here we run a very simple test of the Graph API after login is
+          // successful.  See statusChangeCallback() for when this call is made.
+          function testAPI() {
+            console.log('Welcome!  Fetching your information.... ');
+            FB.api('/me', function(response) {
+              console.log('Successful login for: ' + response.name);
+              document.getElementById('status').innerHTML =
+                'Thanks for logging in, ' + response.name + '!';
+            });
+          }
+        </script>
+
+        <!--
+          Below we include the Login Button social plugin. This button uses
+          the JavaScript SDK to present a graphical Login button that triggers
+          the FB.login() function when clicked.
+        -->
+
+        <fb:login-button scope="public_profile,email" onlogin="checkLoginState();">
+        </fb:login-button>
+
+        <div id="status">
+        </div>
             {% for signin in __signins__ %}
-            <h3><a href="/auth/from/weibo"><i class="uk-icon-weibo"></i> 使用新浪微博登录</a></h3>
+            <h3><a href="/auth/from/{{ signin.icon }}"><i class="uk-icon-{{ signin.icon }}"></i> {{ signin.name }}</a></h3>
             {% endfor %}
-            <p>You need authorize to allow connect to your social passport for the first time.</p>
         </div>
     </div>
+    <!-- E:sign in -->
+    <!-- sign up -->
+    <div id="modal-signup" class="uk-modal">
+        <div class="uk-modal-dialog">
+            <a class="uk-modal-close uk-close"></a>
+            <div class="uk-modal-header">
+                <h2>请填写注册信息</h2>
+            </div>
+            <form id="form-sign-up" v-on="submit: signUp" class="uk-form uk-form-stack">
+              <div class="uk-alert uk-alert-danger uk-hidden"></div>
+              <div class="uk-form-row">
+                  <label class="uk-form-label" for="email">Email:</label>
+                  <div class="uk-form-controls">
+                      <div class="uk-form-icon">
+                          <i class="uk-icon-envelope-o"></i>
+                          <input v-model="email" type="text" id="email" name="email" maxlength="50" style="width:300px" placeholder="email@example.com">
+                      </div>
+                  </div>
+              </div>
+              <div class="uk-form-row">
+                  <label class="uk-form-label" for="passwd">密码:</label>
+                  <div class="uk-form-controls">
+                      <div class="uk-form-icon">
+                          <i class="uk-icon-lock"></i>
+                          <input v-model="passwd" type="password" id="passwd" name="passwd" maxlength="50" style="width:300px" placeholder="密码">
+                      </div>
+                  </div>
+              </div>
+              <div class="uk-form-row">
+                  <label class="uk-form-label" for="passwd">确认密码:</label>
+                  <div class="uk-form-controls">
+                      <div class="uk-form-icon">
+                          <i class="uk-icon-lock"></i>
+                          <input v-model="cpasswd" type="password" id="cpasswd" name="cpasswd" maxlength="50" style="width:300px" placeholder="确认密码">
+                      </div>
+                  </div>
+              </div>
+              <div class="uk-form-row">
+                  <div class="uk-form-controls">
+                      <button type="submit" class="uk-button uk-button-primary"><i class="uk-icon-sign-in"></i> 注册</button>
 
+                  </div>
+              </div>
+
+          </form>
+
+        </div>
+    </div>
+    <!-- E: sign up-->
     <div id="oldBrowser">
         <div class="uk-alert uk-alert-danger" data-uk-alert>
             <a href="#0" class="uk-alert-close uk-close"></a>
+            <button type="button" v-on=“click: goSignup” class="uk-button uk-button-primary"><i class="uk-icon-user-plus"></i> 注册</button>
             <p>
                 WARNING: You are using an old browser that does not support HTML5.
                 Please choose a modern browser (<a href="http://www.google.com/chrome" target="_blank">Chrome</a> / <a href="http://www.mozilla.org/firefox/" target="_blank">Firefox</a> / <a href="http://www.apple.com/safari/" target="_blank">Sarafi</a>) to get a good experience.

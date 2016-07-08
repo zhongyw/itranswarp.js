@@ -75,6 +75,25 @@ function* $getUser(id) {
     return user;
 }
 
+function* $createUser(userParam){
+  var user = yield User.$create({
+    role: userParam.role,
+    name: userParam.name,
+    email: userParam.email
+
+  });
+  return user;
+}
+function* $createLocalUser(user, localUserParam){
+  var localUser = yield LocalUser.$create({
+    user_id: user.id,
+    passwd: localUserParam.passwd
+  });
+  localUser.passwd = auth.generatePassword(localUser.id, localUser.passwd);
+
+  yield localUser.$update(['passwd']);
+}
+
 function* $bindUsers(entities, propName) {
     var i, entity, u, prop = propName || 'user_id';
     for (i=0; i<entities.length; i++) {
@@ -185,13 +204,42 @@ module.exports = {
         };
     },
     'POST /api/users': function* (){
-        helper.checkPermission(this.request, constants.role.EDITOR);
 
+        helper.checkPermission(this.request, constants.role.EDITOR);
+        var email,
+            user,
+            role,
+            data = this.request.body;
+          email = data.email;
+        user = yield $getUserByEmail(email);
+    },
+    'POST /api/signUp': function* (){
+        // helper.checkPermission(this.request, constants.role.EDITOR);
+        var email,
+            user,
+            localUser,
+            role,
+            data = this.request.body,
+            userParam = {
+              email: data.email,
+              role: constants.role.SUBSCRIBER,
+              name: data.email
+            },
+            localUserParam = {
+              passwd: data.passwd
+            }
+
+        user = yield $createUser(userParam);
+        localUser = yield $createLocalUser(user, localUserParam);
+        this.body = {
+            page: 1,
+            users: 2
+        };
     },
     'POST /api/authenticate': function* () {
         /**
          * Authenticate user by email and password, for local user only.
-         * 
+         *
          * @param email: Email address, in lower case.
          * @param passwd: The password, 40-chars SHA1 string, in lower case.
          */
@@ -219,6 +267,7 @@ module.exports = {
         if (localuser === null) {
             throw api.authFailed('passwd', 'Cannot signin local.')
         }
+
         // check password:
         if (!auth.verifyPassword(localuser.id, passwd, localuser.passwd)) {
             throw api.authFailed('passwd', 'Bad password.');
