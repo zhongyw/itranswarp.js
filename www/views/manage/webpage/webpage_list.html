@@ -81,7 +81,7 @@ function initVM(webpages) {
             <tbody>
                 <tr v-for="p in webpages">
                     <td>
-                        <a v-text="p.name" v-attr="href: '/webpage/'+p.alias" target="_blank"></a>
+                        <a v-text="p.name" :href="'/webpage/'+p.alias" target="_blank"></a>
                     </td>
                     <td><span v-text="p.alias"></span></td>
                     <td>

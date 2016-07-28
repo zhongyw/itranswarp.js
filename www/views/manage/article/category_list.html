@@ -119,7 +119,7 @@ function initVM(data) {
             <tbody>
                 <tr v-for="c in categories">
                     <td>
-                        <a v-text="c.name" v-attr="href: '/category/'+c.id" target="_blank"></a>
+                        <a v-text="c.name" :href="'/category/'+c.id" target="_blank"></a>
                     </td>
                     <td><span v-text="c.tag"></span></td>
                     <td><span v-text="c.description"></span></td>

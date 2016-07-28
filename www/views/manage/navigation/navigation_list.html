@@ -127,8 +127,8 @@ function initVM(navigations) {
                 <template v-for="n in navigations">
                     <tr>
 
-                        <td><a v-text="n.name" v-attr="href: n.url" target="_blank"></a></td>
-                        <td><a v-text="n.url" v-attr="href: n.url" target="_blank"></a></td>
+                        <td><a v-text="n.name" :href="n.url" target="_blank"></a></td>
+                        <td><a v-text="n.url" :href="n.url" target="_blank"></a></td>
                         <td><span v-text="n.parent_id"></span></td>
                         <td><span v-text="n.created_at.toDateTime()"></span></td>
                         <td>
@@ -138,8 +138,8 @@ function initVM(navigations) {
                         </td>
                     </tr>
                     <tr v-for="nSub in n.childs" style="background: #eee;">
-                        <td><a class="uk-icon-minus" v-text="nSub.name" v-attr="href: nSub.url" target="_blank" style="padding-left:10px; color:#333;"></a></td>
-                        <td><a v-text="nSub.url" v-attr="href: nSub.url" target="_blank"></a></td>
+                        <td><a class="uk-icon-minus" v-text="nSub.name" :href="nSub.url" target="_blank" style="padding-left:10px; color:#333;"></a></td>
+                        <td><a v-text="nSub.url" :href="nSub.url" target="_blank"></a></td>
                         <td><span v-text="nSub.parent_id"></span></td>
                         <td><span v-text="nSub.created_at.toDateTime()"></span></td>
                         <td>

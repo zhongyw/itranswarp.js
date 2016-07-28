@@ -73,13 +73,13 @@ function initVM(replies, page) {
             <tbody>
                 <tr v-for="obj in replies">
                     <td>
-                        <img v-attr="src: obj.user.image_url" class="uk-comment-avatar uk-border-circle x-avatar" style="width:50px;height:50px;">
+                        <img :src="obj.user.image_url" class="uk-comment-avatar uk-border-circle x-avatar" style="width:50px;height:50px;">
                     </td>
                     <td>
                         <span v-text="obj.user.name"></span>
                     </td>
                     <td>
-                        <p><a target="_blank" v-attr="href: '/discuss/topic/' + obj.topic_id + '/find/' + obj.id">Topic</a></p>
+                        <p><a target="_blank" :href="'/discuss/topic/' + obj.topic_id + '/find/' + obj.id">Topic</a></p>
                         <div v-if="!obj.deleted" v-html="obj.content"></div>
                         <div v-if="obj.deleted"><div class="uk-alert uk-alert-danger">{{ _('Deleted') }}</div></div>
                     </td>

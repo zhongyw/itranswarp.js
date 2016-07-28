@@ -119,7 +119,7 @@ function initVM(boards) {
                 <tr v-for="obj in boards">
                     <td><span v-text="obj.tag"></span></td>
                     <td>
-                        <a v-text="obj.name" v-attr="href: '/discuss/' + obj.id" target="_blank"></a>
+                        <a v-text="obj.name" :href="'/discuss/' + obj.id" target="_blank"></a>
                         <i v-if="obj.locked" class="uk-icon-lock"></i>
                     </td>
                     <td><span v-text="obj.description"></span></td>

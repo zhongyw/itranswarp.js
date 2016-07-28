@@ -78,9 +78,9 @@ function initVM(wikis) {
             </thead>
             <tbody>
                 <tr v-for="w in wikis">
-                    <td><img v-attr="src: '/files/attachments/' + w.cover_id + '/s'" /></td>
+                    <td><img :src="'/files/attachments/' + w.cover_id + '/s'" /></td>
                     <td>
-                        <p><a v-attr="href: '/wiki/' + w.id" target="_blank" v-text="w.name"></a></p>
+                        <p><a :href="'/wiki/' + w.id" target="_blank" v-text="w.name"></a></p>
                         <p v-text="w.tag"></p>
                         <p v-text="w.description"></p>
                     </td>

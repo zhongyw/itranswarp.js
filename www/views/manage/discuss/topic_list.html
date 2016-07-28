@@ -103,14 +103,14 @@ function initVM(topics, page) {
             <tbody>
                 <tr v-for="obj in topics">
                     <td>
-                        <img v-attr="src: obj.user.image_url" class="uk-comment-avatar uk-border-circle x-avatar" style="width:50px;height:50px;">
+                        <img :src="obj.user.image_url" class="uk-comment-avatar uk-border-circle x-avatar" style="width:50px;height:50px;">
                     </td>
                     <td>
                         <span v-text="obj.user.name"></span>
                     </td>
                     <td>
-                        <p><a v-text="obj.name" v-attr="href: '/discuss/' + obj.board.id + '/' + obj.id" target="_blank"></a></p>
-                        <p v-if="obj.ref_id"><a v-attr="href: '/' + obj.ref_type + '/' + obj.ref_id" target="_blank">问题来源</a></p>
+                        <p><a v-text="obj.name" :href="'/discuss/' + obj.board.id + '/' + obj.id" target="_blank"></a></p>
+                        <p v-if="obj.ref_id"><a :href="'/' + obj.ref_type + '/' + obj.ref_id" target="_blank">问题来源</a></p>
                     </td>
                     <td>
                         <i class="icon-tag"></i> <span v-text="obj.tags"></span>

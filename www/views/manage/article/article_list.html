@@ -113,15 +113,15 @@ function initVM(data) {
             <tbody>
                 <tr v-for="a in articles">
                     <td>
-                        <img v-attr="src: '/files/attachments/' + a.cover_id + '/s'" />
+                        <img :src="'/files/attachments/' + a.cover_id + '/s'" />
                     </td>
                     <td>
-                        <p><a v-text="a.name" v-attr="href: '/article/' + a.id" target="_blank"></a></p>
+                        <p><a v-text="a.name" :href="'/article/' + a.id" target="_blank"></a></p>
                         <p v-text="a.description"></p>
                         <p><span v-for="t in a.tags" style="padding-right:1em;"><i class="uk-icon-tag"></i><span v-text="t"></span></span></p>
                     </td>
                     <td>
-                        <p><i class="uk-icon-list"></i> <a v-attr="href: '/category/' + a.category_id" v-text="a.category_name" target="_blank"></a></p>
+                        <p><i class="uk-icon-list"></i> <a :href="'/category/' + a.category_id" v-text="a.category_name" target="_blank"></a></p>
                         <p><i class="uk-icon-user"></i> <span v-text="a.user_name"></span></p>
                     </td>
                     <td>
