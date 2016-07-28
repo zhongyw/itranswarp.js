@@ -51,6 +51,7 @@ function _buildUrl(method, path, params) {
 }
 
 function generatePassword(email) {
+
     return crypto.createHash('sha1').update(email + ':password').digest('hex');
 }
 

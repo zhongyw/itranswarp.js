@@ -125,11 +125,11 @@ function initVM(boards) {
                     <td><span v-text="obj.description"></span></td>
                     <td><span v-text="obj.created_at.toDateTime()"></span></td>
                     <td>
-                        <a v-on="click: moveUp(obj.id)" title="Move this board up" href="#0" class="x-btn"><i class="uk-icon-arrow-up"></i></a>
-                        <a v-on="click: moveDown(obj.id)" title="Move this board down" href="#0" class="x-btn"><i class="uk-icon-arrow-down"></i></a>
-                        <a v-on="click: editBoard(obj.id)" title="Edit this board" href="#0" class="x-btn"><i class="uk-icon-edit"></i></a>
-                        <a v-if="!obj.locked" v-on="click: lockBoard(obj.id, true)" title="Lock this board" href="#0" class="x-btn"><i class="uk-icon-ban"></i></a>
-                        <a v-if="obj.locked" v-on="click: lockBoard(obj.id, false)" title="Unock this board" href="#0" class="x-btn"><i class="uk-icon-circle-o"></i></a>
+                        <a v-on:click="moveUp(obj.id)" title="Move this board up" href="#0" class="x-btn"><i class="uk-icon-arrow-up"></i></a>
+                        <a v-on:click="moveDown(obj.id)" title="Move this board down" href="#0" class="x-btn"><i class="uk-icon-arrow-down"></i></a>
+                        <a v-on:click="editBoard(obj.id)" title="Edit this board" href="#0" class="x-btn"><i class="uk-icon-edit"></i></a>
+                        <a v-if="!obj.locked" v-on:click="lockBoard(obj.id, true)" title="Lock this board" href="#0" class="x-btn"><i class="uk-icon-ban"></i></a>
+                        <a v-if="obj.locked" v-on:click="lockBoard(obj.id, false)" title="Unock this board" href="#0" class="x-btn"><i class="uk-icon-circle-o"></i></a>
                     </td>
                 </tr>
                 <tr v-if="categories.length===0">
@@ -139,7 +139,7 @@ function initVM(boards) {
         </table>
 
         <div id="sort" class="uk-margin" style="text-align:right; display:none">
-            <button v-on="click: sort" type="button" class="uk-button uk-button-success"><i class="uk-icon-list"></i> {{ _('Save Orders') }}</button>
+            <button v-on:click="sort" type="button" class="uk-button uk-button-success"><i class="uk-icon-list"></i> {{ _('Save Orders') }}</button>
         </div>
     </div>
 

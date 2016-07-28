@@ -89,8 +89,8 @@ function initVM(webpages) {
                     </td>
                     <td><span v-text="p.created_at.toDateTime()"></span></td>
                     <td>
-                        <a v-on="click: editWebpage(p.id)" title="Edit Web Page" href="#0" class="x-btn"><i class="uk-icon-edit"></i></a>
-                        <a v-on="click: deleteWebpage(p.id)" title="Delete Web Page" href="#0" class="x-btn"><i class="uk-icon-trash"></i></a>
+                        <a v-on:click="editWebpage(p.id)" title="Edit Web Page" href="#0" class="x-btn"><i class="uk-icon-edit"></i></a>
+                        <a v-on:click="deleteWebpage(p.id)" title="Delete Web Page" href="#0" class="x-btn"><i class="uk-icon-trash"></i></a>
                     </td>
                 </tr>
                 <tr v-if="webpages.length===0">

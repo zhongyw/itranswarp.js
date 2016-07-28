@@ -39,7 +39,7 @@ $(function() {
 {% block main %}
     <div class="uk-width-3-10">&nbsp;</div>
     <div class="uk-width-4-10">
-        <form id="form-auth" v-on="submit: onSubmit" class="uk-form uk-form-stack">
+        <form id="form-auth" v-on:submit="onSubmit" class="uk-form uk-form-stack">
             <legend>{{ _('Please Sign In') }}</legend>
             <div class="uk-alert uk-alert-danger uk-hidden"></div>
             <div class="uk-form-row">

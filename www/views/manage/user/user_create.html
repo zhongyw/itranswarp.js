@@ -150,7 +150,7 @@
         <!--<li><a href="#0" onclick="location.assign('/manage/article/category_list')">{{ _('Categories') }}</a></li>-->
     </ul>
 
-    <form v-on="submit: submit" class="uk-form uk-form-stacked uk-margin">
+    <form v-on:submit="submit" class="uk-form uk-form-stacked uk-margin">
         <legend>{{ form.name }}</legend>
         <fieldset>
             <div class="uk-alert uk-alert-danger uk-hidden"></div>

@@ -90,7 +90,7 @@ function initVM(data) {
                     </td>
                     <td><span v-text="a.created_at.toDateTime()"></span></td>
                     <td>
-                        <a v-on="click: deleteAttachment(a.id)" href="#0" title="Delete Attachment" class="x-btn"><i class="uk-icon-trash"></i></a>
+                        <a v-on:click="deleteAttachment(a.id)" href="#0" title="Delete Attachment" class="x-btn"><i class="uk-icon-trash"></i></a>
                     </td>
                 </tr>
                 <tr v-if="page.totalItems===0">

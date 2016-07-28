@@ -129,8 +129,8 @@ function initVM(data) {
                         <p><span v-text="a.created_at.toDateTime()"></span></p>
                     </td>
                     <td>
-                        <a v-on="click: editArticle(a.id)" title="Edit Article" href="#0" class="x-btn"><i class="uk-icon-edit"></i></a>
-                        <a v-on="click: deleteArticle(a.id)" title="Delete Article" href="#0" class="x-btn"><i class="uk-icon-trash"></i></a>
+                        <a v-on:click="editArticle(a.id)" title="Edit Article" href="#0" class="x-btn"><i class="uk-icon-edit"></i></a>
+                        <a v-on:click="deleteArticle(a.id)" title="Delete Article" href="#0" class="x-btn"><i class="uk-icon-trash"></i></a>
                     </td>
                 </tr>
                 <tr v-if="page.totalItems===0">

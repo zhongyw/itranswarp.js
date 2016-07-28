@@ -146,8 +146,8 @@ function initVM(data) {
                     <td><span v-text="u.email"></span></td>
                     <td><span v-text="u.created_at.toDateTime()"></span></td>
                     <td>
-                        <a v-if="! isLocked(u)" v-on="click: lockUser(u)" title="Lock User" href="#0" class="x-btn"><i class="uk-icon-ban"></i></a>
-                        <a href="#0" v-if="isLocked(u)" v-on="click: unlockUser(u)"><i class="uk-icon-circle-o"></i></a>
+                        <a v-if="! isLocked(u)" v-on:click="lockUser(u)" title="Lock User" href="#0" class="x-btn"><i class="uk-icon-ban"></i></a>
+                        <a href="#0" v-if="isLocked(u)" v-on:click="unlockUser(u)"><i class="uk-icon-circle-o"></i></a>
                         <span v-if="isLocked(u)" v-text="getLockTime(u)"></span>
                     </td>
                 </tr>

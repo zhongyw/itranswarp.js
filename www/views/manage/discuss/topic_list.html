@@ -119,8 +119,8 @@ function initVM(topics, page) {
                         <span v-text="obj.created_at.toDateTime('yyyy-MM-dd hh:mm')"></span>
                     </td>
                     <td>
-                        <a v-on="click: lockTopic(obj)" title="Lock Topic" href="#0" class="x-btn"><i class="uk-icon-lock"></i></a>
-                        <a v-on="click: deleteTopic(obj)" title="Delete Topic" href="#0" class="x-btn"><i class="uk-icon-trash"></i></a>
+                        <a v-on:click="lockTopic(obj)" title="Lock Topic" href="#0" class="x-btn"><i class="uk-icon-lock"></i></a>
+                        <a v-on:click="deleteTopic(obj)" title="Delete Topic" href="#0" class="x-btn"><i class="uk-icon-trash"></i></a>
                     </td>
                 </tr>
                 <tr v-if="page.totalItems===0">

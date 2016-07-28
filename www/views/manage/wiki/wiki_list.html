@@ -86,8 +86,8 @@ function initVM(wikis) {
                     </td>
                     <td><span v-text="w.created_at.toDateTime()"></span></td>
                     <td>
-                        <a v-on="click: listWiki(w.id)" data-toggle="tooltip" title="List Wiki" href="#0" class="x-btn"><i class="uk-icon-list"></i></a>
-                        <a v-on="click: deleteWiki(w.id)" data-toggle="tooltip" title="Delete wiki" href="#0" class="x-btn"><i class="uk-icon-trash"></i></a>
+                        <a v-on:click="listWiki(w.id)" data-toggle="tooltip" title="List Wiki" href="#0" class="x-btn"><i class="uk-icon-list"></i></a>
+                        <a v-on:click="deleteWiki(w.id)" data-toggle="tooltip" title="Delete wiki" href="#0" class="x-btn"><i class="uk-icon-trash"></i></a>
                     </td>
                 </tr>
                 <tr v-if="wikis.length===0">

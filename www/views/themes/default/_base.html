@@ -366,7 +366,7 @@
             <div class="uk-modal-header">
                 <h2>请登录</h2>
             </div>
-            <form id="form-auth" v-on="submit: onSubmit" class="uk-form uk-form-stack">
+            <form id="form-auth" v-on:submit="onSubmit" class="uk-form uk-form-stack">
               <div class="uk-alert uk-alert-danger uk-hidden"></div>
               <div class="uk-form-row">
                   <label class="uk-form-label" for="email">Email:</label>
@@ -504,7 +504,7 @@
             <div class="uk-modal-header">
                 <h2>请填写注册信息</h2>
             </div>
-            <form id="form-sign-up" v-on="submit: signUp" class="uk-form uk-form-stack">
+            <form id="form-sign-up" v-on:submit="signUp" class="uk-form uk-form-stack">
               <div class="uk-alert uk-alert-danger uk-hidden"></div>
               <div class="uk-form-row">
                   <label class="uk-form-label" for="email">Email:</label>

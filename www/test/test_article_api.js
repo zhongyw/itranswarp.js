@@ -39,7 +39,6 @@ describe('#articles', function () {
     });
 
     describe('#api', function () {
-        debugger;
         it('should get empty articles', function* () {
             var r = yield remote.$get(roles.CONTRIBUTOR, '/api/articles');
             remote.shouldNoError(r);

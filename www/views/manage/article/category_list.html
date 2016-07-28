@@ -125,10 +125,10 @@ function initVM(data) {
                     <td><span v-text="c.description"></span></td>
                     <td><span v-text="c.created_at.toDateTime('yyyy-MM-dd hh:mm')"></span></td>
                     <td>
-                        <a v-on="click: moveUp(c.id)" title="Move this category up" href="#0" class="x-btn"><i class="uk-icon-arrow-up"></i></a>
-                        <a v-on="click: moveDown(c.id)" title="Move this category down" href="#0" class="x-btn"><i class="uk-icon-arrow-down"></i></a>
-                        <a v-on="click: editCategory(c.id)" title="Edit this category" href="#0" class="x-btn"><i class="uk-icon-edit"></i></a>
-                        <a v-on="click: deleteCategory(c.id)" title="Delete this category" href="#0" class="x-btn"><i class="uk-icon-trash"></i></a>
+                        <a v-on:click="moveUp(c.id)" title="Move this category up" href="#0" class="x-btn"><i class="uk-icon-arrow-up"></i></a>
+                        <a v-on:click="moveDown(c.id)" title="Move this category down" href="#0" class="x-btn"><i class="uk-icon-arrow-down"></i></a>
+                        <a v-on:click="editCategory(c.id)" title="Edit this category" href="#0" class="x-btn"><i class="uk-icon-edit"></i></a>
+                        <a v-on:click="deleteCategory(c.id)" title="Delete this category" href="#0" class="x-btn"><i class="uk-icon-trash"></i></a>
                     </td>
                 </tr>
                 <tr v-if="categories.length===0">
@@ -138,7 +138,7 @@ function initVM(data) {
         </table>
 
         <div id="sort" class="uk-margin" style="text-align:right; display:none">
-            <button v-on="click: sort" type="button" class="uk-button uk-button-success"><i class="uk-icon-list"></i> {{ _('Save Orders') }}</button>
+            <button v-on:click="sort" type="button" class="uk-button uk-button-success"><i class="uk-icon-list"></i> {{ _('Save Orders') }}</button>
         </div>
     </div>
 

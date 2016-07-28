@@ -87,7 +87,7 @@ function initVM(replies, page) {
                         <span v-text="obj.created_at.toDateTime()"></span>
                     </td>
                     <td>
-                        <a v-if="!obj.deleted" v-on="click: deleteReply(obj)" title="Delete Reply" href="#0" class="x-btn"><i class="uk-icon-trash"></i></a>
+                        <a v-if="!obj.deleted" v-on:click="deleteReply(obj)" title="Delete Reply" href="#0" class="x-btn"><i class="uk-icon-trash"></i></a>
                     </td>
                 </tr>
                 <tr v-if="page.totalItems===0">

@@ -132,9 +132,9 @@ function initVM(navigations) {
                         <td><span v-text="n.parent_id"></span></td>
                         <td><span v-text="n.created_at.toDateTime()"></span></td>
                         <td>
-                            <a v-on="click: moveUp(n.id)" title="Move this navigation up" href="#0" class="x-btn"><i class="uk-icon-arrow-up"></i></a>
-                            <a v-on="click: moveDown(n.id)" title="Move this navigation down" href="#0" class="x-btn"><i class="uk-icon-arrow-down"></i></a>
-                            <a v-on="click: deleteNavigation(n.id)" title="Delete this navigation" href="#0" class="x-btn"><i class="uk-icon-trash"></i></a>
+                            <a v-on:click="moveUp(n.id)" title="Move this navigation up" href="#0" class="x-btn"><i class="uk-icon-arrow-up"></i></a>
+                            <a v-on:click="moveDown(n.id)" title="Move this navigation down" href="#0" class="x-btn"><i class="uk-icon-arrow-down"></i></a>
+                            <a v-on:click="deleteNavigation(n.id)" title="Delete this navigation" href="#0" class="x-btn"><i class="uk-icon-trash"></i></a>
                         </td>
                     </tr>
                     <tr v-for="nSub in n.childs" style="background: #eee;">
@@ -143,9 +143,9 @@ function initVM(navigations) {
                         <td><span v-text="nSub.parent_id"></span></td>
                         <td><span v-text="nSub.created_at.toDateTime()"></span></td>
                         <td>
-                            <a v-on="click: moveUp(nSub.id)" title="Move this navigation up" href="#0" class="x-btn"><i class="uk-icon-arrow-up"></i></a>
-                            <a v-on="click: moveDown(nSub.id)" title="Move this navigation down" href="#0" class="x-btn"><i class="uk-icon-arrow-down"></i></a>
-                            <a v-on="click: deleteNavigation(nSub.id)" title="Delete this navigation" href="#0" class="x-btn"><i class="uk-icon-trash"></i></a>
+                            <a v-on:click="moveUp(nSub.id)" title="Move this navigation up" href="#0" class="x-btn"><i class="uk-icon-arrow-up"></i></a>
+                            <a v-on:click="moveDown(nSub.id)" title="Move this navigation down" href="#0" class="x-btn"><i class="uk-icon-arrow-down"></i></a>
+                            <a v-on:click="deleteNavigation(nSub.id)" title="Delete this navigation" href="#0" class="x-btn"><i class="uk-icon-trash"></i></a>
                         </td>
                     </tr>
                 </template>
@@ -157,7 +157,7 @@ function initVM(navigations) {
         </table>
 
         <div id="sort" class="uk-margin" style="text-align:right; display:none">
-            <button v-on="click: sort" type="button" class="uk-button uk-button-success"><i class="uk-icon-list"></i> {{ _('Save Orders') }}</button>
+            <button v-on:click="sort" type="button" class="uk-button uk-button-success"><i class="uk-icon-list"></i> {{ _('Save Orders') }}</button>
         </div>
     </div>
 
