@@ -96,7 +96,6 @@ function getView(view) {
 }
 
 function* getIndexModel() {
-    debugger;
     var
         i, a, hotArticles,
         categories = yield categoryApi.$getCategories(),

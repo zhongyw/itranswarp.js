@@ -209,7 +209,16 @@
                 <a href="/" class="uk-navbar-brand uk-hidden-large"><i class="uk-icon-home"></i></a>
                 <ul id="ul-navbar" class="uk-navbar-nav uk-hidden-small">
                     {% for nav in __navigations__ %}
-                    <li><a href="{{ nav.url }}">{{ nav.name|e }}</a></li>
+                    <li data-uk-dropdown="{mode:'hover'}">
+                        <a href="{{ nav.url }}">{{ nav.name|e }}</a>
+                        <div class="uk-dropdown uk-dropdown-small">
+                            <ul class="uk-nav uk-nav-dropdown">
+                                {% for navChild in nav.childs %}
+                                <li><a href="{{ navChild.url }}">{{ navChild.name|e }}</a></li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                    </li>
                     {% endfor %}
                 </ul>
                 {% if __navigations__ && __navigations__.length %}
@@ -219,7 +228,10 @@
                         <div class="uk-dropdown uk-dropdown-navbar">
                             <ul class="uk-nav uk-nav-navbar">
                                 {% for nav in __navigations__ %}
-                                <li><a href="{{ nav.url }}">{{ nav.name|e }}</a></li>
+                                <li>
+                                    <a href="{{ nav.url }}">{{ nav.name|e }}</a>
+
+                                </li>
                                 {% endfor %}
                             </ul>
                         </div>

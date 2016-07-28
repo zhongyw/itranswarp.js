@@ -39,7 +39,7 @@ describe('#articles', function () {
     });
 
     describe('#api', function () {
-
+        debugger;
         it('should get empty articles', function* () {
             var r = yield remote.$get(roles.CONTRIBUTOR, '/api/articles');
             remote.shouldNoError(r);
@@ -75,6 +75,7 @@ describe('#articles', function () {
                 content: 'Long content...',
                 image: remote.readFileSync('res-image.jpg').toString('base64')
             });
+            //console.log("r1:",r1);
             remote.shouldNoError(r1);
             r1.category_id.should.equal(category.id);
             r1.name.should.equal('Article 1');

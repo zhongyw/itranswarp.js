@@ -26,7 +26,7 @@ var
     warp = db.warp,
     next_id = db.next_id;
 
-var base_url = 'http://local.itranswarp.com:2015';
+var base_url = 'http://local.nbn8.com:3000';
 
 var options = {
     url: base_url
@@ -38,7 +38,7 @@ var emails = {};
 
 _.each(constants.role, function (role, roleName) {
     if (role !== constants.role.GUEST) {
-        emails['' + role] = roleName.toLowerCase() + '@itranswarp.com';
+        emails['' + role] = roleName.toLowerCase() + '@nbn8.com';
     }
 });
 

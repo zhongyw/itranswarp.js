@@ -26,9 +26,19 @@ function* $getNavigation(id) {
 }
 
 function* $getNavigations() {
-    return yield Navigation.$findAll({
+    var navs = yield Navigation.$findAll({
         order: 'display_order'
+    }), navRoots = [];
+    _.each(navs, function(nav){
+        if(!nav.parent_id) navRoots.push(nav);
     });
+    _.each(navRoots, function(navRoot){
+        navRoot.childs = [];
+        _.each(navs, function(nav){
+            if(nav.parent_id === navRoot.id) navRoot.childs.push(nav);
+        });
+    });
+    return navRoots;
 }
 
 function* $getNavigationMenus() {

@@ -28,16 +28,17 @@
     "gm": "1.x"
   },
   "devDependencies": {
-    "co": "4.5.1",
     "async": "*",
+    "co": "4.5.1",
+    "co-mocha": "^1.1.2",
+    "gulp": "^3.6.2",
+    "gulp-concat": "*",
+    "gulp-jslint": "*",
+    "gulp-less": "*",
+    "gulp-minify-css": "*",
+    "gulp-uglify": "*",
     "less": "1.x",
     "mocha": "2.x",
-    "should": "3.x",
-    "gulp-less": "*",
-    "gulp-jslint": "*",
-    "gulp-uglify": "*",
-    "gulp-concat": "*",
-    "gulp-minify-css": "*",
-    "gulp": "^3.6.2"
+    "should": "3.x"
   }
 }

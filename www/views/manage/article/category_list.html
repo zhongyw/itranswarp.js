@@ -117,7 +117,7 @@ function initVM(data) {
                 </tr>
             </thead>
             <tbody>
-                <tr v-repeat="c: categories">
+                <tr v-for="c in categories">
                     <td>
                         <a v-text="c.name" v-attr="href: '/category/'+c.id" target="_blank"></a>
                     </td>

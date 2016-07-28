@@ -9,7 +9,24 @@ $(function() {
         if (err) {
             return fatal(err);
         }
-        initVM(data.navigations);
+        var navRoots = [],navChilds = [];
+
+        $.each(data.navigations, function(index, nav){
+            if(!nav.parent_id)
+                navRoots.push(nav);
+            else
+                navChilds.push(nav);
+        });
+        $.each(navRoots, function(index, navRoot){
+            navRoot.childs = [];
+            $.each(navChilds, function(indexChild, navChild){
+                if(navChild.parent_id === navRoot.id){
+                    navRoot.childs.push(navChild);
+                }
+            });
+        });
+        initVM(navRoots);
+
     });
 });
 
@@ -107,17 +124,32 @@ function initVM(navigations) {
                 </tr>
             </thead>
             <tbody>
-                <tr v-repeat="n: navigations">
-                    <td><a v-text="n.name" v-attr="href: n.url" target="_blank"></a></td>
-                    <td><a v-text="n.url" v-attr="href: n.url" target="_blank"></a></td>
-                    <td><span v-text="n.parent_id"></span></td>
-                    <td><span v-text="n.created_at.toDateTime()"></span></td>
-                    <td>
-                        <a v-on="click: moveUp(n.id)" title="Move this navigation up" href="#0" class="x-btn"><i class="uk-icon-arrow-up"></i></a>
-                        <a v-on="click: moveDown(n.id)" title="Move this navigation down" href="#0" class="x-btn"><i class="uk-icon-arrow-down"></i></a>
-                        <a v-on="click: deleteNavigation(n.id)" title="Delete this navigation" href="#0" class="x-btn"><i class="uk-icon-trash"></i></a>
-                    </td>
-                </tr>
+                <template v-for="n in navigations">
+                    <tr>
+
+                        <td><a v-text="n.name" v-attr="href: n.url" target="_blank"></a></td>
+                        <td><a v-text="n.url" v-attr="href: n.url" target="_blank"></a></td>
+                        <td><span v-text="n.parent_id"></span></td>
+                        <td><span v-text="n.created_at.toDateTime()"></span></td>
+                        <td>
+                            <a v-on="click: moveUp(n.id)" title="Move this navigation up" href="#0" class="x-btn"><i class="uk-icon-arrow-up"></i></a>
+                            <a v-on="click: moveDown(n.id)" title="Move this navigation down" href="#0" class="x-btn"><i class="uk-icon-arrow-down"></i></a>
+                            <a v-on="click: deleteNavigation(n.id)" title="Delete this navigation" href="#0" class="x-btn"><i class="uk-icon-trash"></i></a>
+                        </td>
+                    </tr>
+                    <tr v-for="nSub in n.childs" style="background: #eee;">
+                        <td><a class="uk-icon-minus" v-text="nSub.name" v-attr="href: nSub.url" target="_blank" style="padding-left:10px; color:#333;"></a></td>
+                        <td><a v-text="nSub.url" v-attr="href: nSub.url" target="_blank"></a></td>
+                        <td><span v-text="nSub.parent_id"></span></td>
+                        <td><span v-text="nSub.created_at.toDateTime()"></span></td>
+                        <td>
+                            <a v-on="click: moveUp(nSub.id)" title="Move this navigation up" href="#0" class="x-btn"><i class="uk-icon-arrow-up"></i></a>
+                            <a v-on="click: moveDown(nSub.id)" title="Move this navigation down" href="#0" class="x-btn"><i class="uk-icon-arrow-down"></i></a>
+                            <a v-on="click: deleteNavigation(nSub.id)" title="Delete this navigation" href="#0" class="x-btn"><i class="uk-icon-trash"></i></a>
+                        </td>
+                    </tr>
+                </template>
+
                 <tr v-if="navigations.length===0">
                     <td colspan="5">No navigation found.</td>
                 </tr>

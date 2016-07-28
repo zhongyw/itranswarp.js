@@ -33,7 +33,6 @@ var db = require('./db'),
 
 app.name = 'itranswarp';
 app.proxy = true;
-
 // set view template:
 var swigTemplatePath = __dirname + '/views/';
 swig.setDefaults({
