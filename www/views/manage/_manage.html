@@ -11,7 +11,7 @@
     <script src="/static/js/marked.js"></script>
     <script src="/static/js/uikit/uikit.js"></script>
     <script src="/static/js/uikit/components/htmleditor.js"></script>
-    <script src="/static/js/vue.min.js"></script>
+    <script src="/static/js/vue.js"></script>
     <script src="/static/js/itranswarp.js"></script>
   
 <style>
@@ -193,7 +193,7 @@ function uploadImage(callback) {
             <div class="uk-navbar uk-navbar-attached">
                 {% if __show_navigations__ %}
                 <a href="/" target="_blank" class="uk-navbar-brand"><i class="uk-icon-home"></i></a>
-                <ul id="ul-navbar" class="uk-navbar-nav"><li><a href="/manage/discuss/">{{ _('Discuss') }}</a></li>
+                <ul id="ul-navbar" class="uk-navbar-nav">
                     <li><a href="/manage/discuss/">{{ _('Discuss') }}</a></li>
                     <li><a href="/manage/article/">{{ _('Articles') }}</a></li>
                     <li><a href="/manage/webpage/">{{ _('Web Pages') }}</a>
