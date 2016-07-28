@@ -99,7 +99,9 @@ function initVM(data) {
             </tbody>
         </table>
 
-        <div v-component="pagination" v-with="page"></div>
+        <div>
+            <pagination :page="page"></pagination>
+        </div>
     </div>
 
 {% endblock %}
