@@ -9,23 +9,8 @@ $(function() {
         if (err) {
             return fatal(err);
         }
-        var navRoots = [],navChilds = [];
 
-        $.each(data.navigations, function(index, nav){
-            if(!nav.parent_id)
-                navRoots.push(nav);
-            else
-                navChilds.push(nav);
-        });
-        $.each(navRoots, function(index, navRoot){
-            navRoot.childs = [];
-            $.each(navChilds, function(indexChild, navChild){
-                if(navChild.parent_id === navRoot.id){
-                    navRoot.childs.push(navChild);
-                }
-            });
-        });
-        initVM(navRoots);
+        initVM(data.navigations);
 
     });
 });
@@ -137,7 +122,8 @@ function initVM(navigations) {
                             <a v-on:click="deleteNavigation(n.id)" title="Delete this navigation" href="#0" class="x-btn"><i class="uk-icon-trash"></i></a>
                         </td>
                     </tr>
-                    <tr v-for="nSub in n.childs" style="background: #eee;">
+
+                    <tr v-for="nSub in n.childs">
                         <td><a class="uk-icon-minus" v-text="nSub.name" :href="nSub.url" target="_blank" style="padding-left:10px; color:#333;"></a></td>
                         <td><a v-text="nSub.url" :href="nSub.url" target="_blank"></a></td>
                         <td><span v-text="nSub.parent_id"></span></td>

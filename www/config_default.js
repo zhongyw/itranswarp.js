@@ -78,13 +78,20 @@ module.exports = {
     // oauth2 providers that allow sign in from other oauth2 providers:
     oauth2: {
         // e.g. facebook oauth2 configuration:
-        // 'faceook': {
-        //     'icon': 'facebook',
-        //     'name': 'Sign in with Facebook',
-        //     'app_key': 'your-app-id',
-        //     'app_secret': 'your-app-secret',
-        //     'redirect_uri': 'http://your-redirect-uri/config/in/facebook'
-        // }
+        /*'facebook': {
+            'icon': 'facebook',
+            'name': 'Facebook登录',
+            'app_key': '1229544160397328',
+            'app_secret': '7a981b2fbd96c9092ab4084df74cb52e',
+            'redirect_uri': 'http://your-redirect-uri/config/in/facebook'
+        },*/
+        'weibo':{
+            'icon': 'weibo',
+            'name': '新浪微博登录',
+            'app_key': '3273065943',
+            'app_secret': 'f756a27fbb94ce8748c651a6d00b688e',
+            'redirect_uri': 'http://www.nbn8.com/auth/callback/weibo'
+        }
     },
     // END:
     END: 'END'

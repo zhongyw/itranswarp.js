@@ -219,7 +219,7 @@ var schemas = {
         properties: {
             name: PROPERTY.NAME,
             url: PROPERTY.URL,
-            parent_id: PROPERTY.ID
+            parent_id: PROPERTY.ID_EMPTY
         },
         required: ['name', 'url']
     },

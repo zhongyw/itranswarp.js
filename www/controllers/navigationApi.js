@@ -110,7 +110,6 @@ module.exports = {
         name = data.name.trim();
         url = data.url.trim();
         parent_id = data.parent_id.trim();
-        console.log(data, this.request.body);
         num = yield Navigation.$findNumber('max(display_order)');
         this.body = yield Navigation.$create({
             name: name,
