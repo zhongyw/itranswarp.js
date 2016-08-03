@@ -11,13 +11,17 @@ module.exports = {
         SUBSCRIBER:  10000,
         GUEST:       100000000
     },
-
+    type: {
+        NORMAL: 0,
+        ASK: 10
+    },
     signin: {
         LOCAL: 'local'
     },
 
     // cache keys:
     cache: {
+        INDEXMODEL: 'INDEX-MODEL',
         NAVIGATIONS: '__navigations__',
         WEBSITE: '__website__',
         SNIPPETS: '__snippet__',

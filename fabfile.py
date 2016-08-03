@@ -48,7 +48,14 @@ def backup():
         get('%s.tar.gz' % f, '%s/backup/' % _current_path())
         run('rm -f %s' % f)
         run('rm -f %s.tar.gz' % f)
-
+def backup_nginx():
+    ' backup nginx to local file '
+    dt = _now()
+    f = 'backgup-nginx-%s' % dt
+    with cd('/tmp'):
+        run('tar -czvf %s.tar.gz %s' %(f, '/etc/nginx'))
+        get('%s.tar.gz' % f, '%s/backup/' % _current_path())
+        run('rm -f %s.tar.gz' % f);
 def build():
     ' build deploy package '
     with lcd('www'):

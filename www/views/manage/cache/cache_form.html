@@ -1,0 +1,60 @@
+{% extends '../_manage.html' %}
+
+{% block title %} {{ _('All Articles') }} {% endblock %}
+
+{% block head %}
+<script>
+
+    $(function() {
+        initVM({
+
+        });
+    });
+
+    function initVM(data) {
+        console.log('init vm...');
+        var vm = new Vue({
+            el: '#vm',
+            data: {
+
+            },
+            methods: {
+                clear: function() {
+                    postJSON('/api/cache/clear', function(err, result) {
+                        if (err) {
+                            return error(err);
+                        }
+                        alert(result.message);
+                    });
+                }
+
+            }
+        });
+        $('#loading').hide();
+        $('#vm').show();
+    }
+</script>
+{% endblock %}
+
+{% block main %}
+
+<div id="loading" class="uk-width-1-1">
+    <i class="uk-icon-spinner uk-icon-spin"></i> Loading...
+</div>
+
+<div id="error" class="uk-width-1-1">
+</div>
+
+<div id="vm" class="uk-width-1-1">
+    <ul class="uk-tab" data-uk-tab>
+        <li class="uk-active"><a href="#0">{{ _('Clear the cache') }}</a></li>
+        <!--<li><a href="#0" onclick="">{{ _('Check the cache') }}</a></li>
+        <li><a href="#0" onclick="">{{ _('Cache Settings') }}</a></li>-->
+    </ul>
+    <div class="uk-margin">
+        <a href="javascript:void(0);"  v-on:click="clear()" class="uk-button"><i class="uk-icon-refresh"></i> {{ _('Clear the cache') }}</a>
+    </div>
+
+</div>
+
+{% endblock %}

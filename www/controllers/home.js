@@ -373,6 +373,10 @@ module.exports = {
 
         this.render(getView('tools/jsonformat.html'), yield $getModel.apply(this, [{}]));
     },
+    'GET /flow/index': function* (id) {
+
+        this.render(getView('flow/index.html'), yield $getModel.apply(this, [{}]));
+    },
     'GET /search': function* () {
         this.body = 'blank';
         // var

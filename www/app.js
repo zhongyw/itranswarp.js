@@ -63,7 +63,7 @@ function serveStatic() {
             method = this.request.method,
             path = this.request.path,
             pos;
-        if (method === 'GET' && (path.indexOf('/static/') === 0 || path === '/favicon.ico')) {
+        if ((method === 'GET' && (path.indexOf('/static/') === 0 || path === '/favicon.ico')) || path.indexOf('/app/') === 0 ) {
             console.log('>>> static path: ' + path);
             pos = path.lastIndexOf('.');
             if (pos !== (-1)) {
@@ -123,7 +123,8 @@ app.use(function* theMiddleware(next) {
         prefix4 = path.substring(0, 4),
         start = Date.now(),
         execTime,
-        isApi = path.indexOf('/api/') === 0;
+        isApi = path.indexOf('/api/') === 0,
+        isApp = path.indexOf('/app/') === 0;
     console.log('[%s] %s %s', new Date().toISOString(), method, path);
 
     if (prefix8 === '/manage/' && request.path !== '/manage/signin') {
@@ -138,6 +139,8 @@ app.use(function* theMiddleware(next) {
             console.log('[API Request]');
             logJSON(request.body);
         }
+    }else if(isApp){
+
     }
     else {
         this.render = function (templ, model) {

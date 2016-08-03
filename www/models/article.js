@@ -4,10 +4,13 @@
 
 var base = require('./_base.js');
 
+var constants = require('../constants');
+
 module.exports = function (warp) {
     return base.defineModel(warp, 'Article', [
         base.column_id('user_id', { index: true }),
         base.column_id('category_id', { index: true }),
+        base.column_bigint('type', { defaultValue: constants.type.NORMAL }),
         base.column_id('cover_id', { defaultValue: '' }),
         base.column_id('content_id'),
         base.column_bigint('views'),

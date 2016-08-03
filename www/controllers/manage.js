@@ -129,6 +129,63 @@ module.exports = {
             }
         }));
     },
+    // ask ////////////////////////////////////////////////////////////////
+
+    'GET /manage/ask/(ask_list)?': function* () {
+        this.render('manage/ask/ask_list.html', yield $getModel({
+            pageIndex: helper.getPageNumber(this.request)
+        }));
+    },
+
+    'GET /manage/ask/category_list': function* () {
+        this.render('manage/ask/category_list.html', yield $getModel({
+            pageIndex: helper.getPageNumber(this.request)
+        }));
+    },
+
+    'GET /manage/ask/create_ask': function* () {
+        this.render('manage/ask/ask_form.html', yield $getModel({
+            form: {
+                name: 'Create ask',
+                action: '/api/asks',
+                redirect: 'ask_list'
+            }
+        }));
+    },
+
+    'GET /manage/ask/edit_ask': function* () {
+        var id = getId(this.request);
+        this.render('manage/ask/ask_form.html', yield $getModel({
+            id: id,
+            form: {
+                name: 'Edit ask',
+                action: '/api/asks/' + id,
+                redirect: 'ask_list'
+            }
+        }));
+    },
+
+    'GET /manage/ask/create_category': function* () {
+        this.render('manage/ask/category_form.html', yield $getModel({
+            form: {
+                name: 'Create Category',
+                action: '/api/categories',
+                redirect: 'category_list'
+            }
+        }));
+    },
+
+    'GET /manage/ask/edit_category': function* () {
+        var id = getId(this.request);
+        this.render('manage/ask/category_form.html', yield $getModel({
+            id: id,
+            form: {
+                name: 'Edit Category',
+                action: '/api/categories/' + id,
+                redirect: 'category_list'
+            }
+        }));
+    },
 
     // webpage ////////////////////////////////////////////////////////////////
 
@@ -311,6 +368,34 @@ module.exports = {
             form: {
                 name: 'Edit Settings',
                 action: '/api/settings/' + g,
+                redirect: g
+            }
+        }));
+    },
+    // cache /////////////////////////////////////////////////////////////////////
+    'GET /manage/cache/': function* () {
+        this.response.redirect('/manage/cache/clear');
+    },
+    'GET /manage/cache/:g': function* (g){
+        this.render('manage/cache/cache_form.html', yield $getModel({
+            tabs: [
+                {
+                    key: 'clear',
+                    name: '清除缓存'
+                },
+                {
+                    key: 'display',
+                    name: '查看缓存'
+                },
+                {
+                    key: 'cache',
+                    name: '缓存设置'
+                }
+            ],
+            group: g,
+            form: {
+                name: 'Cache Settings',
+                action: '/api/cache/' + g,
                 redirect: g
             }
         }));

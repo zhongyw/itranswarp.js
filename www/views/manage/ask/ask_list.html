@@ -1,0 +1,146 @@
+{% extends '../_manage.html' %}
+
+{% block title %} {{ _('All Asks') }} {% endblock %}
+
+{% block head %}
+<script>
+
+$(function() {
+    getJSON('/api/categories', function (err, d) {
+        if (err) {
+            return fatal(err);
+        }
+        var categories = d.categories;
+        getJSON('/api/asks', {
+            page: {{ pageIndex }}
+        }, function (err, data) {
+            if (err) {
+                return fatal(err);
+            }
+            bindCategories(data.asks, categories);
+            initVM({
+                categories: categories,
+                asks: data.asks,
+                page: data.page
+            });
+        });
+    });
+});
+
+function bindCategories(asks, categories) {
+    // bind category_name to ask:
+    for (var i = 0; i < asks.length; i ++) {
+        var a = asks[i];
+        for (var n = 0; n < categories.length; n ++) {
+            if (a.category_id===categories[n].id) {
+                a.category_name = categories[n].name;
+                break;
+            }
+        }
+        a.tags = a.tags ? a.tags.split(',') : [];
+    }
+}
+
+function initVM(data) {
+    console.log('init vm...');
+    var vm = new Vue({
+        el: '#vm',
+        data: {
+            asks: data.asks,
+            page: data.page
+        },
+        methods: {
+            editAsk: function(id) {
+                location.assign('edit_ask?id=' + id);
+            },
+            find: function(id) {
+                for (var i = 0; i < this.asks.length; i ++) {
+                    var c = this.asks[i];
+                    if (c.id===id) {
+                        return c;
+                    }
+                }
+                throw 'logic error';
+            },
+            deleteAsk: function(id) {
+                var a = this.find(id);
+                if (confirm('Ask \"' + a.name + '\" will be deleted. Continue?')) {
+                    postJSON('/api/asks/' + a.id + '/delete', function(err, result) {
+                        if (err) {
+                            return error(err);
+                        }
+                        refresh();
+                    });
+                }
+            },
+        }
+    });
+    $('#loading').hide();
+    $('#vm').show();
+}
+</script>
+{% endblock %}
+
+{% block main %}
+
+    <div id="loading" class="uk-width-1-1">
+        <i class="uk-icon-spinner uk-icon-spin"></i> Loading...
+    </div>
+
+    <div id="error" class="uk-width-1-1">
+    </div>
+
+    <div id="vm" class="uk-width-1-1">
+        <ul class="uk-tab" data-uk-tab>
+            <li class="uk-active"><a href="#0">{{ _('Asks') }}</a></li>
+            <li><a href="#0" onclick="location.assign('/manage/ask/category_list')">{{ _('Categories') }}</a></li>
+        </ul>
+        <div class="uk-margin">
+            <a href="javascript:refresh()" class="uk-button"><i class="uk-icon-refresh"></i> {{ _('Refresh') }}</a>
+            <a href="create_ask" class="uk-button uk-button-primary uk-float-right"><i class="uk-icon-plus"></i> {{ _('New Ask') }}</a>
+        </div>
+
+        <table class="uk-table uk-table-hover">
+            <thead>
+                <tr>
+                    <th width="20%">{{ _('Cover') }}</th>
+                    <th width="35%">{{ _('Name') }}</th>
+                    <th width="15%">{{ _('Category') }} / {{ _('Author') }}</th>
+                    <th width="15%">Publish / Created</th>
+                    <th width="15%"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr v-for="a in asks">
+                    <td>
+                        <img :src="'/files/attachments/' + a.cover_id + '/s'" />
+                    </td>
+                    <td>
+                        <p><a v-text="a.name" :href="'/ask/' + a.id" target="_blank"></a></p>
+                        <p v-text="a.description"></p>
+                        <p><span v-for="t in a.tags" style="padding-right:1em;"><i class="uk-icon-tag"></i><span v-text="t"></span></span></p>
+                    </td>
+                    <td>
+                        <p><i class="uk-icon-list"></i> <a :href="'/category/' + a.category_id" v-text="a.category_name" target="_blank"></a></p>
+                        <p><i class="uk-icon-user"></i> <span v-text="a.user_name"></span></p>
+                    </td>
+                    <td>
+                        <p><span v-text="a.publish_at.toDateTime()"></span></p>
+                        <p><span v-text="a.created_at.toDateTime()"></span></p>
+                    </td>
+                    <td>
+                        <a v-on:click="editAsk(a.id)" title="Edit Ask" href="#0" class="x-btn"><i class="uk-icon-edit"></i></a>
+                        <a v-on:click="deleteAsk(a.id)" title="Delete Ask" href="#0" class="x-btn"><i class="uk-icon-trash"></i></a>
+                    </td>
+                </tr>
+                <tr v-if="page.totalItems===0">
+                    <td colspan="5">No ask found.</td>
+                </tr>
+            </tbody>
+        </table>
+        <div>
+            <pagination :page="page"></pagination>
+        </div>
+    </div>
+
+{% endblock %}
