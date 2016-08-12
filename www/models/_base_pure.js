@@ -28,7 +28,7 @@ function defineModel(warp, name, cols, opts) {
         defaultValue: next_id
     });
     // add created_at, updated_at and version:
-    columns.push({
+    /*columns.push({
         name: 'created_at',
         type: 'bigint',
         index: true
@@ -41,7 +41,7 @@ function defineModel(warp, name, cols, opts) {
         name: 'version',
         type: 'bigint',
         defaultValue: 0
-    });
+    });*/
     fnBeforeCreate = options.beforeCreate;
     options.beforeCreate = function (obj) {
         if (fnBeforeCreate) {
@@ -71,7 +71,13 @@ module.exports = {
             type: 'varchar(50)'
         }, options || {});
     },
-
+    column_int: function (name, options) {
+        return _.merge({
+            name: name,
+            type: 'int',
+            defaultValue: 0
+        }, options || {});
+    },
     column_bigint: function (name, options) {
         return _.merge({
             name: name,

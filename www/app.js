@@ -16,6 +16,7 @@ var
     config = require('./config'),
     constants = require('./constants'),
     api_console = require('./api_console'),
+    cors = require('koa-cors'),
     coWechat = require('co-wechat'),
     weixinConfig = {
         token: 'galj1Kheg9uL26DMs8Nt',
@@ -112,6 +113,8 @@ app.use(auth.$userIdentityParser);
 app.use(bodyParser());
 
 var isDevelopment = !process.productionMode;
+
+app.use(cors());
 
 app.use(function* theMiddleware(next) {
     var
