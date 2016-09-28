@@ -21,19 +21,30 @@ var
 var
     User = db.user,
     MdmDevice = db.mdm_device,
+    MdmDeviceHarware = db.mdm_device_hardware,
     warp = db.warp,
     next_id = db.next_id;
 
-function* $getAllMdmDevice(page) {
+function* $getAllMdmDevice(page, params) {
     page.total = yield MdmDevice.$findNumber('count(id)');
     if (page.isEmpty) {
         return [];
     }
-    return yield MdmDevice.$findAll({
-        offset: page.offset,
-        limit: page.limit,
-        order: 'id desc'
-    });
+    // return yield MdmDevice.$findAll({
+    //     offset: page.offset,
+    //     limit: page.limit,
+    //     order: 'id desc'
+    // });
+    var sql = "select *  from mdm_device where 1=1 ",
+        pArr = [];
+    if(params.deviceName) sql += " and device_name like  ? ",pArr.push("%" + params.deviceName + "%") ;
+    return yield warp.$query(sql,pArr);
+}
+function* $getAllMdmDeviceHardware(){
+    return yield MdmDeviceHarware.$findAll();
+}
+function* $getMdmDeviceHardwareByDeviceId(){
+    return yield
 }
 
 module.exports = {
@@ -41,7 +52,8 @@ module.exports = {
     'POST /api/emm/device/devices/list': function* (){
         var path = __dirname + "/../data/device/devices/list.json";
         var page = helper.getPage(this.request);
-        var list = yield $getAllMdmDevice(page);
+        //console.log(this.request.body);
+        var list = yield $getAllMdmDevice(page, this.request.body);
 
         // set in nginx
         /*this.set('Access-Control-Allow-Origin', '*');
@@ -56,6 +68,12 @@ module.exports = {
             devices: list
         };
         //this.body = yield fs.readFile(path, 'utf8');
+    },
+    'GET /api/emm/device/hardware': function* (){
+        var list = yield $getAllMdmDeviceHardware();
+        this.body = {
+            hardware: list
+        }
     }
 
     

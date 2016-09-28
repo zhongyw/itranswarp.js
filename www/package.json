@@ -3,6 +3,9 @@
   "description": "A full-stack website framework.",
   "version": "0.2.0",
   "private": true,
+  "scripts": {
+    "start": "node --harmony app.js"
+  },
   "dependencies": {
     "body-parser": "1.10.x",
     "co-fs": "^1.2.0",

@@ -110,6 +110,11 @@ var static_prefix = config.cdn.static_prefix;
 
 app.use(auth.$userIdentityParser);
 
+// 'content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'
+// 无法获取到this.request.body的值,
+// 应该是koa-bodyparser插件的问题， 无法解析值有方括号的参数
+// 其默认值 var enableTypes = opts.enableTypes || ['json', 'form'];
+
 app.use(bodyParser());
 
 var isDevelopment = !process.productionMode;

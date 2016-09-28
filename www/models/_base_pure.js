@@ -85,7 +85,12 @@ module.exports = {
             defaultValue: 0
         }, options || {});
     },
-
+    column_timestamp: function(name, options){
+        return _.merge({
+            name: name,
+            type: 'timestamp'
+        }, options || {});
+    },
     column_varchar_50: function (name, options) {
         return _.merge({
             name: name,
