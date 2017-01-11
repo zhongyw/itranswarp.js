@@ -175,7 +175,7 @@ describe('#articles', function () {
             dl.headers['content-type'].should.equal('image/jpeg');
             parseInt(dl.headers['content-length'], 10).should.approximately(39368, 10000);
         });
-
+        
         it('create article with wrong parameter by editor', function* () {
             var
                 i, r, params,

@@ -207,7 +207,7 @@ module.exports = {
     'GET /api/articles/:id': function* (id) {
         /**
          * Get article.
-         * 
+         *
          * @name Get Article
          * @param {string} id: Id of the article.
          * @param {string} [format]: Return html if format is 'html', default to '' (raw).
@@ -227,7 +227,7 @@ module.exports = {
     'GET /api/articles': function* () {
         /**
          * Get articles by page.
-         * 
+         *
          * @name Get Articles
          * @param {number} [page=1]: The page number, starts from 1.
          * @return {object} Article objects and page information.
@@ -245,7 +245,7 @@ module.exports = {
     'POST /api/articles': function* () {
         /**
          * Create a new article.
-         * 
+         *
          * @name Create Article
          * @param {string} category_id: Id of the category that article belongs to.
          * @param {string} name: Name of the article.
@@ -309,7 +309,7 @@ module.exports = {
     'POST /api/articles/:id': function* (id) {
         /**
          * Update an exist article.
-         * 
+         *
          * @name Update Article
          * @param {string} id: Id of the article.
          * @param {string} [category_id]: Id of the category that article belongs to.
@@ -388,13 +388,14 @@ module.exports = {
             text = yield Text.$find(article.content_id);
             article.content = text.value;
         }
+
         this.body = article;
     },
 
     'POST /api/articles/:id/delete': function* (id) {
         /**
          * Delete an article.
-         * 
+         *
          * @name Delete Article
          * @param {string} id: Id of the article.
          * @return {object} Object contains deleted id.
